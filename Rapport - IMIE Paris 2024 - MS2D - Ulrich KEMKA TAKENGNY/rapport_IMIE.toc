@@ -1,0 +1,17 @@
+\contentsline {chapter}{List of Figures}{ii}{}%
+\contentsline {chapter}{List of Tables}{iii}{}%
+\contentsline {chapter}{Liste des algorithmes}{iv}{}%
+\contentsline {chapter}{Introduction}{1}{}%
+\contentsline {chapter}{\numberline {1}Données étudiés}{2}{}%
+\contentsline {section}{\numberline {1.1}Section une}{2}{}%
+\contentsline {subsection}{\numberline {1.1.1}Sub section One}{2}{}%
+\contentsline {subsection}{\numberline {1.1.2}Sub section Two}{3}{}%
+\contentsline {section}{\numberline {1.2}powers series}{3}{}%
+\contentsline {chapter}{\numberline {2}Modèles utilisés et Applications}{4}{}%
+\contentsline {chapter}{Conclusion}{5}{}%
+\contentsline {chapter}{Annexes}{6}{}%
+\contentsline {chapter}{\numberline {A}Code R pour résoudre la problématique}{6}{}%
+\contentsline {section}{\numberline {A.1}Pré-traitement des données}{6}{}%
+\contentsline {section}{\numberline {A.2}Code R pour les modèles}{6}{}%
+\contentsline {section}{\numberline {A.3}Librairies utilisées}{6}{}%
+\setcounter {tocdepth}{3}
