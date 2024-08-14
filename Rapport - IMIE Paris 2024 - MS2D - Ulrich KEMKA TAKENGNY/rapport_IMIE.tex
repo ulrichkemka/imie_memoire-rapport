@@ -3,9 +3,12 @@
 %% @Class:  PFE IMIE-PARIS.
 
 \documentclass[a4paper, oneside, 12pt, final]{extreport}
+% Pour utiliser Times New Roman
+\usepackage{mathptmx}
+% \usepackage[french]{babel} % Configure le document pour le français
 \usepackage{graphicx}
 
-\parindent 0cm
+\parindent 1cm
 \usepackage{makeidx}
 \makeindex
 %\usepackage[english]{babel}
@@ -29,14 +32,18 @@
 %  \section{References}}{}{}
 %\makeatother
 
+% Pour l'interligne
+\usepackage{setspace}
 
+% Configurer l'interligne à 1.5
+\onehalfspacing
 
 \usepackage[nottoc]{tocbibind}
 
-\textwidth 18cm
+\textwidth 16.5cm
 \textheight 24cm
 \topmargin -1cm
-\oddsidemargin -1cm
+\oddsidemargin -0.3cm
 
 % set font encoding for PDFLaTeX or XeLaTeX
 \usepackage{ifxetex}
@@ -67,7 +74,6 @@
 }
 
 
-
 \newcommand{\studyDepartment} {%
   Entreprise d'accueil :
   
@@ -76,10 +82,6 @@
 \newcommand{\IMIE} {%
 \\ Ecole Supérieure d'informatique IMIE-Paris
 }
-
-%\newcommand{\codePFE} {% Reference
-%  Code PFE%
-%}
 
 
 \newcommand{\AU} {
@@ -98,6 +100,9 @@
   Does nothing really%
 }
 
+\renewcommand{\contentsname}{Table des matières}
+\renewcommand{\listfigurename}{Liste des Figures}
+\renewcommand{\listtablename}{Liste des Tableaux}
 
 % used in maketitle
 \title{\reportSubject}
@@ -135,7 +140,6 @@
 \begin{titlepage}
   \begin{center}
 
-
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % THE HEADER
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -159,9 +163,7 @@
     %   %\reportTitle{}%\\\textsc{Report}\\%
     % }
 
-    % \vspace{5pt}
 
-    % \vspace{15pt}
     \textbf{\textit{Rapport d'activité de fin d'alternance}}\\
 
     \vspace{5pt}
@@ -191,20 +193,10 @@
 
 
     Sous la supervision de :  \textbf{Jonas RENAULT}, \textit{Chef de projet informatique}\\
-    \vspace{10pt}
+    \vspace{50pt}
 
-
-
-    %\vfill
-
-    \vspace{40pt}
-    % \textbf{\textit{Projet de Fin d'Etudes fait \`a}}\\
-    % \vspace{5pt}
-    % \studyDepartment
-    % \centering
-    % \includegraphics[scale=0.08]{./images/logonoir.png}
   \end{center}
-  \vspace{40pt}
+  \vspace{30pt}
   \AU\\
 \end{titlepage}
 
@@ -220,66 +212,23 @@
 %  4 \paragraph{paragraph}
 %  5 \subparagraph{subparagraph}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Dédicace et Remerciements
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\chapter*{Dedication}
-%\chapter*{D\'edicace}
-%\addcontentsline{toc}{chapter}{Dedication}
-\thispagestyle{empty}
-%
-%For all they have endured to satisfy all my needs and wishes
-
-\begin{center}
-  {\it
-
-    A ... pour son(leur) sacrifice et son(leur) soutien, \\
-    en témoignage de mon infinie reconnaissance et mon profond attachement \\
-    \vspace{1cm}
-    A tous ceux qui me sont chers...
-
-  }
-\end{center}
-%
-%\nopagebreak{%
-% And maybe a quote here
-% \raggedright\hspace{5.75cm} To all of you,~\\
-%\raggedright\hspace{7.75cm} I dedicate this work.
-%  \raggedleft\normalfont\large\itshape{} \reportAuthor\par%
-%}
-%
-%\cleardoublepage%
-
-\chapter*{Acknowledgment}
-%\chapter*{Remerciements}
-%\addcontentsline{toc}{chapter}{Thanks}
-\thispagestyle{empty}
-%
-%Au terme de ce travail (A l'issue de ce travail), je tiens à remercier M., Mme, Pr., Dr. pour sa disponibilité et ses conseils judicieux. \\
-
-Je n'aurais jamais pu réaliser ce projet sans la précieuse aide et sans le soutien d'un grand nombre de personnes dont la générosité, la bonne humeur et l'intérêt manifestés à l'égard de mon PFE m'ont permis de progresser. \\
-
-
-
-Ma reconnaissance va à ceux qui ont plus particulièrement assuré le soutien affectif de ce travail : ma famille ainsi que mes amis. Mes parents...
-
-
 \input{./chapitres/abstract.tex}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Divers chapitres
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \tableofcontents
-%\addcontentsline{toc}{chapter}{\contentsname}
+% \addcontentsline{toc}{chapter}{Table des matières}
 
 \listoffigures
-%\addcontentsline{toc}{chapter}{Liste des Figures}
+% \addcontentsline{toc}{chapter}{Liste des Figures}
+
 \listoftables
-%\addcontentsline{toc}{chapter}{Liste des Tableaux}
+% \addcontentsline{toc}{chapter}{Liste des Tableaux}
+
 \listofalgorithms
 \addcontentsline{toc}{chapter}{Liste des algorithmes}
+
 \cleardoublepage
 
 \newpage
@@ -289,7 +238,7 @@ Ma reconnaissance va à ceux qui ont plus particulièrement assuré le soutien a
 \input{./chapitres/introduction.tex}
 
 
-\chapter{Données étudiés}%
+\chapter{Présentation de l'entreprise}
 \label{chap:chapterone}
 \input{./chapitres/chapitre1.tex}
 
