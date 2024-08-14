@@ -5,7 +5,7 @@
 \documentclass[a4paper, oneside, 12pt, final]{extreport}
 \usepackage{graphicx}
 
-\parindent 0cm
+\parindent 1cm
 \usepackage{makeidx}
 \makeindex
 %\usepackage[english]{babel}
@@ -30,13 +30,18 @@
 %\makeatother
 
 
+% Pour l'interligne
+\usepackage{setspace}
+
+% Configurer l'interligne à 1.5
+\onehalfspacing
 
 \usepackage[nottoc]{tocbibind}
 
-\textwidth 18cm
+\textwidth 16.5cm
 \textheight 24cm
 \topmargin -1cm
-\oddsidemargin -1cm
+\oddsidemargin -0.3cm
 
 % set font encoding for PDFLaTeX or XeLaTeX
 \usepackage{ifxetex}
@@ -174,9 +179,9 @@ Optimisation des Algorithmes de Deep Learning pour la Détection et la Reconnais
       {\bfseries\Large\sc \reportAuthor}\\
     }
 
-    \vspace{10pt}
+    \vspace{15pt}
 
-    \vspace{5pt} {
+    {
       \renewcommand*{\familydefault}{\defaultFont}
       \fontsize{27pt}{27pt}\selectfont%
       \rule{0.5\textwidth}{.4pt}\\
