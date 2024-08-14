@@ -5,7 +5,6 @@
 \documentclass[a4paper, oneside, 12pt, final]{extreport}
 % Pour utiliser Times New Roman
 \usepackage{mathptmx}
-% \usepackage[french]{babel} % Configure le document pour le français
 \usepackage{graphicx}
 
 \parindent 1cm
@@ -19,18 +18,10 @@
 \newtheorem{exemple}{Example}[chapter]
 
 
-%\usepackage[nottoc]{tocbibind}
-%\addcontentsline{toc}{section}{References}
-
 \providecommand{\keywords}[1]{\textbf{\textit{Mots clés---}} #1}
 \providecommand{\keywordss}[1]{\textbf{\textit{Keywords---}} #1}
 
 \usepackage{etoolbox}
-%\makeatletter
-%\patchcmd{\thebibliography}{%
-%  \chapter*{\bibname}\@mkboth{\MakeUppercase\bibname}%{\MakeUppercase\bibname}}{%
-%  \section{References}}{}{}
-%\makeatother
 
 % Pour l'interligne
 \usepackage{setspace}
@@ -73,21 +64,17 @@
   Développement et optimisation des plateformes de simulation pour les scénarios de sécurité et défense : \textit{IntelLab} 
 }
 
-
 \newcommand{\studyDepartment} {%
   Entreprise d'accueil :
-  
 }
 
 \newcommand{\IMIE} {%
 \\ Ecole Supérieure d'informatique IMIE-Paris
 }
 
-
 \newcommand{\AU} {
 \centering \textbf{Année Académique 2023-2024}
 }
-
 
 \newcommand{\specialcell}[1]{%
   \begin{tabularx}{\textwidth}{@{}X@{}}#1\end{tabularx}%
@@ -102,7 +89,7 @@
 
 \renewcommand{\contentsname}{Table des matières}
 \renewcommand{\listfigurename}{Liste des Figures}
-\renewcommand{\listtablename}{Liste des Tableaux}
+% \renewcommand{\listtablename}{Liste des Tableaux}
 
 % used in maketitle
 \title{\reportSubject}
@@ -110,18 +97,10 @@
 
 % Enable SageTeX to run SageMath code right inside this LaTeX file.
 % documentation: http://mirrors.ctan.org/macros/latex/contrib/sagetex/sagetexpackage.pdf
-%\usepackage{sagetex}
 
-%\hypersetup{
-%  pdftitle={\reportTitle~-~\reportSubject},%
-%  pdfauthor={\reportAuthor},%
-%  pdfsubject={\reportSubject},%
-%  pdfkeywords={report} {internship} {pfe} {enis}
-%}
 
 \usepackage{graphics}
 \usepackage{graphicx}
-
 
 \usepackage[acronym,toc,section=chapter]{glossaries}
 \makeglossaries
@@ -130,10 +109,9 @@
 \newacronym{efg}{EFG}{Another acronym}
 \newacronym{svm}{SVM}{Support Vector Machines}
 
-\pagenumbering{roman} 
+\pagenumbering{roman}
 
 \usepackage[utf8]{inputenc}
-%\usepackage[french]{babel}
 
 \begin{document}
 \thispagestyle{empty}
@@ -156,14 +134,6 @@
     % THE PAGE CONTENT
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    % \vspace{10pt} {%
-    %   \renewcommand*{\familydefault}{\defaultFont}
-    %   \fontsize{46pt}{46pt}\selectfont
-    %   % MEMOIRE\\%
-    %   %\reportTitle{}%\\\textsc{Report}\\%
-    % }
-
-
     \textbf{\textit{Rapport d'activité de fin d'alternance}}\\
 
     \vspace{5pt}
@@ -173,9 +143,9 @@
       {\bfseries\Large\sc \reportAuthor}\\
     }
 
-    \vspace{10pt}
+    \vspace{15pt}
 
-    \vspace{5pt} {
+    {
       \renewcommand*{\familydefault}{\defaultFont}
       \fontsize{27pt}{27pt}\selectfont%
       \rule{0.5\textwidth}{.4pt}\\
@@ -185,12 +155,10 @@
       \rule{0.5\textwidth}{.4pt}
     }
 
-
     \vspace{30pt}
     {Diplôme préparé : \textbf{\large Manager de Solutions Digitales et Data}}\\
     %Soutenu le \dateSoutenance, devant la commission d'examen:\\
     \vspace{46pt}
-
 
     Sous la supervision de :  \textbf{Jonas RENAULT}, \textit{Chef de projet informatique}\\
     \vspace{50pt}
@@ -212,7 +180,6 @@
 %  4 \paragraph{paragraph}
 %  5 \subparagraph{subparagraph}
 
-\input{./chapitres/abstract.tex}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Divers chapitres
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -223,11 +190,6 @@
 \listoffigures
 % \addcontentsline{toc}{chapter}{Liste des Figures}
 
-\listoftables
-% \addcontentsline{toc}{chapter}{Liste des Tableaux}
-
-\listofalgorithms
-\addcontentsline{toc}{chapter}{Liste des algorithmes}
 
 \cleardoublepage
 
@@ -247,15 +209,10 @@
 \input{chapitres/chapitre2.tex}
 
 
-\chapter*{Conclusion et Perspectives}
+\chapter*{Conclusion}
 \label{chap:conclusion}
-\markboth{\MakeUppercase{Conclusion}}{}%
-\addcontentsline{toc}{chapter}{Conclusion}
-And a very interesting conclusion here\@. ~\\
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat.
+\input{chapitres/conclusion.tex}
+
 
 \newpage
 \appendix
@@ -312,9 +269,7 @@ quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
 \addtocontents{toc}{\protect\setcounter{tocdepth}{3}}
 
 \printglossaries
-\printindex
-
-\input{chapitres/abstract}
+% \printindex
 
 
 \end{document}
