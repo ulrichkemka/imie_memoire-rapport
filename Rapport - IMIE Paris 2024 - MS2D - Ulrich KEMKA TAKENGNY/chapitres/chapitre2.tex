@@ -101,7 +101,7 @@ Cet environnement est développé en utilisant les technologies suivantes :
 \begin{figure}[h]
 	\center%
 	\includegraphics[width=\textwidth]{./images/architectur_intellab.png}
-	\caption[Planification des issues]{Planning issues - GitLab}\label{fig:architectur_intellab}
+	\caption[Architecture Application Web IntelLab]{Architecture Application Web IntelLab}\label{fig:architectur_intellab}
 \end{figure}
 
 
@@ -165,19 +165,17 @@ Ce projet a beaucoup de similitudes que celui de l'application Web. Nous allons 
 \subsection{Contexte du projet}
 Le contexte initial de ce projet est pratiquement le même que celui de l'application web, la différence réside au niveau du type de scénario.
 Ce projet permet la simulation des scénarios de types sécurité économique.
-Ce type de scénario a exigé le développement d'une autre d'environnement car diffère du monde du renseignement militaire.
-Cette plateforme est né du fait qu'on doit recréer un environnement d’entreprises telles que des startups ou des équipes de recherche.
+Ce type de scénario a exigé le développement d'un autre d'environnement car diffère du monde du renseignement militaire.
+Cette plateforme est née du fait qu'on doit recréer un environnement d’entreprise telles que des startups ou des équipes de recherche.
 Les objectifs la formation et la sensibilisation à la détection de signaux faibles précurseurs d’actions d’ingérence.
 
 
 \subsection{Outils de gestion de projet}
 Comme pour les autres projets, nous sommes une équipe de deux personnes, le responsable informatique et moi. Au vu de cela, nous avons toujours adopté la méthodologie agile car cela nous permet de gérer efficacement nos ressources limitées, de nous adapter rapidement aux changements de priorités, et de livrer des fonctionnalités clés du serveur de messagerie de manière itérative et continue, en garantissant une meilleure réactivité aux besoins des utilisateurs finaux.
 
-
 \subsubsection{Planification des tâches}
 Comme pour l'autre projet, nous avons centralisé la gestion de ce projet sur la plateforme GitLab.
 La description des taches, la gestion du code, collaboration en temps réel, l’intégration continue et le déploiement automatique, toutes ses fonctionnalités sont gérées sur la plateforme GitLab.
-
 
 \begin{figure}[h]
 	\center
@@ -186,10 +184,88 @@ La description des taches, la gestion du code, collaboration en temps réel, l�
 \end{figure}
 
 
+\subsection{Réalisation du projet}
+
+\subsubsection{Etude de l'existant}
+
+Dans le cadre du projet de serveur de messagerie, nous avons étudié l'infrastructure existante.
+Cette infrastructure présente un serveur de messagerie utilisant \textit{HmailServer}, avec \textit{Mozilla Thunderbird} et \textit{Outlook} pour les utilisateurs finaux.
+
+L'ancienne infrastructure reposait sur l'installation d'HmailServer sur un PC dédié en local, non utilisé par les joueurs, et nécessitait la configuration de répéteurs WiFi pour permettre la connectivité des utilisateurs au réseau de messagerie.
+Les adresses IP et les noms de domaine devaient être manuellement configurés pour garantir la connexion des PC clients au PC contenant le serveur de messagerie.
+La gestion des comptes de messagerie était effectuée via HmailServer, où chaque domaine et adresse étaient créés manuellement avant d'être ajoutés dans Mozilla Thunderbird et ou Outlook.
+
+Cette approche offrait une solution locale robuste, mais nécessitait une configuration minutieuse et fastidieuse, notamment lors de changements d'adresses IP ou de la configuration des serveurs SMTP dans Thunderbird.
+Nous avons également souligner des limitations, telles que la nécessité d'ouvrir certains ports spécifiques pour que le serveur puisse fonctionner correctement sur certains PC, ce qui impliquait l'intervention de la DSI.
+
+L'étude de cette infrastructure existante a permis d'identifier les points forts et les limites de l'ancien système, ce qui nous guidera dans l'optimisation et la modernisation du nouveau projet de serveur de messagerie.
+
+
+\subsubsection{Nouvelle infrastructure du serveur de messagerie}
 
 
 
+Le projet de serveur de messagerie utilise une infrastructure basée sur Docker pour les environnements de développement et de production. Docker permet de containeriser les différents services nécessaires au fonctionnement du serveur de messagerie, offrant ainsi une grande flexibilité et une gestion simplifiée des déploiements. Cette approche permet également de maintenir des environnements cohérents entre le développement et la production, assurant une transition fluide et sans heurts.
 
+Les services critiques, tels que le serveur SMTP, IMAP, l'interface d'administration, ainsi que les services auxiliaires comme le résolveur DNS, sont déployés dans des conteneurs Docker distincts. Cette architecture modulaire permet une maintenance facilitée et un déploiement rapide des mises à jour.
+
+\subsubsection{Description de l'infrastructure}
+
+Cet environnement est développé en utilisant les technologies et outils suivants :
+
+\noindent\textbf{Core services :}
+\begin{itemize}
+	\item \textbf{Mailu :} Nn serveur de messagerie simple mais complet, facile à configurer et facile à entretenir et complet, sous forme d'un ensemble d'images Docker. Les principales caractéristiques comprennent :
+	      Un ensemble d'images Docker utilisées pour configurer et gérer le serveur de messagerie. Les services principaux incluent :
+	      \begin{itemize}
+		      \item \textbf{Serveur de messagerie standard,} IMAP et IMAP+, SMTP et soumission avec profils de configuration automatique pour les clients.
+		      \item \textbf{Fonctionnalités de messagerie avancées,} alias, alias de domaine, routage personnalisé, recherche en texte intégral des pièces jointes des e-mails
+		      \item \textbf{Accès Web (Roundcube),} Fournit les services IMAP pour l'accès aux boîtes aux lettres.
+		      \item \textbf{Fonctionnalités utilisateur,} alias, réponse automatique, transfert automatique, comptes récupérés, managesieve.
+		      \item \textbf{Fonctionnalités d'administration,} Un service de filtrage de spam qui analyse et marque les emails suspects.
+		      \item \textbf{Sécurité,} TLS appliqué, DANE, MTA-STS, Letsencrypt!, DKIM sortant, scanner antivirus, Snuffleupagus , blocage des pièces jointes malveillantes.
+		      \item \textbf{Antispam,} uto-apprentissage, liste grise, DMARC et SPF, anti-usurpation d'identité.
+		      \item \textbf{Liberté,} tous les composants FOSS, aucun tracker inclus.
+	      \end{itemize}
+\end{itemize}
+
+\begin{figure}[h]
+	\center
+	\includegraphics[width=\textwidth]{./images/domains_mailu.png}
+	\caption[Domaines du serveur Mailu]{Liste des domaines sur le serveur Mailu}\label{fig:domains_mailu}
+\end{figure}
+
+\noindent\textbf{Scripts d'administration :}
+\begin{itemize}
+	\item \textbf{setup-users :} Script pour configurer les comptes utilisateurs sur le serveur de messagerie.
+	\item \textbf{setup-emails :} Script pour initialiser les boîtes aux lettres des utilisateurs avec les messages préconfigurés.
+	\item \textbf{backup.sh :} Script utilisé pour sauvegarder les mails des joueurs d'une session de jeu.
+	\item \textbf{reset.sh :} Script utilisé pour réinitialiser et reconfigurer le serveur de messagerie.
+	\item \textbf{restore.sh :} Script utilisé pour restaurer les mails d'une session antérieure pour des fins statistiques et amélioration des scénarios.
+\end{itemize}
+
+\noindent\textbf{Infrastructure :}
+\begin{itemize}
+	\item \textbf{Docker :} Utilisé pour déployer et orchestrer l'ensemble des services de messagerie sur les serveurs de développement et de production.
+	\item \textbf{Poetry :} Utilisé pour gérer les dépendances Python et les scripts d'administration du serveur.
+\end{itemize}
+
+\begin{figure}[h]
+	\center
+	\includegraphics[width=0.6\textwidth]{./images/docker_mpc.png}
+	\caption[Liste des conteneurs de Mailu]{Containers Mailu}\label{fig:docker_mpc}
+\end{figure}
+
+
+\subsubsection{Avantages de la nouvelle infrastructure}
+\subsubsection{Avantages de la nouvelle infrastructure par rapport à l'ancienne}
+
+La nouvelle infrastructure présente plusieurs avantages significatifs par rapport à l'ancienne :
+
+\begin{itemize}
+	\item \textbf{Flexibilité et Scalabilité :} L'utilisation de Docker pour containeriser les différents services permet une grande flexibilité dans la gestion des composants du système. Cette approche facilite le déploiement, la mise à jour, et la maintenance des services, tout en permettant de faire évoluer l'infrastructure selon les besoins croissants sans perturber les opérations en cours.
+	\item \textbf{Automatisation et Gestion Simplifiée :} L'intégration de scripts d'administration pour la configuration des comptes utilisateurs, initialisation des boîtes mails, la sauvegarde, la réinitialisation et la restauration des données simplifie considérablement la gestion du serveur de messagerie. Ces scripts automatisent des tâches qui, auparavant, auraient pu nécessiter une intervention manuelle complexe et fastidieuse, réduisant ainsi les risques d'erreur humaine et améliorant l'efficacité opérationnelle.
+\end{itemize}
 
 
 
