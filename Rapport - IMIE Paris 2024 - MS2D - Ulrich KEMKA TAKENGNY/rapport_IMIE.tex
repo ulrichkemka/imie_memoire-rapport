@@ -46,6 +46,11 @@
   \usepackage{lmodern}
 \fi
 
+% Ajouter hyperref pour les liens cliquables
+\usepackage[hidelinks]{hyperref}
+
+\setcounter{secnumdepth}{3}
+
 
 % Enable SageTeX to run SageMath code right inside this LaTeX file.
 % documentation: http://mirrors.ctan.org/macros/latex/contrib/sagetex/sagetexpackage.pdf
@@ -204,7 +209,7 @@
 \label{chap:chapterone}
 \input{./chapitres/chapitre1.tex}
 
-\chapter{Modèles utilisés et Applications}
+\chapter{Présentation des projets - Analyse - Résultats obtenus}
 \label{chap:2}
 \input{chapitres/chapitre2.tex}
 
@@ -268,7 +273,7 @@ quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
 
 \addtocontents{toc}{\protect\setcounter{tocdepth}{3}}
 
-\printglossaries
+% \printglossaries
 % \printindex
 
 
