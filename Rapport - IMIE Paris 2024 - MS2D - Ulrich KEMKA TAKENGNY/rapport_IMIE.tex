@@ -21,6 +21,7 @@
 \providecommand{\keywords}[1]{\textbf{\textit{Mots clés---}} #1}
 \providecommand{\keywordss}[1]{\textbf{\textit{Keywords---}} #1}
 
+
 \usepackage{etoolbox}
 
 % Pour l'interligne
@@ -218,30 +219,13 @@
 \label{chap:conclusion}
 \input{chapitres/conclusion.tex}
 
-
-\newpage
 \appendix
-\addcontentsline{toc}{chapter}{Annexes}
-%\markboth{\MakeUppercase{Annexe}}{}
+\newpage
+\renewcommand{\thepage}{\Alph{page}}
+\pagenumbering{Alph}
 
-\chapter{Code R pour résoudre la problématique}
-\label{chap:appendix}
+\input{chapitres/annexes.tex}
 
-
-\section{Pré-traitement des données}
-\section{Code R pour les modèles}
-
-An appedix if you need it.
-
-\begin{verbatim}
- Insérer ici le code !
- \end{verbatim}
-
-\section{Librairies utilisées}
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
