@@ -93,6 +93,7 @@
   Does nothing really%
 }
 
+\renewcommand{\chaptername}{Chapitre}
 \renewcommand{\contentsname}{Table des matières}
 \renewcommand{\listfigurename}{Liste des Figures}
 % \renewcommand{\listtablename}{Liste des Tableaux}
@@ -163,7 +164,6 @@
 
     \vspace{30pt}
     {Diplôme préparé : \textbf{\large Manager de Solutions Digitales et Data}}\\
-    %Soutenu le \dateSoutenance, devant la commission d'examen:\\
     \vspace{46pt}
 
     Sous la supervision de :  \textbf{Jonas RENAULT}, \textit{Chef de projet informatique}\\
@@ -191,10 +191,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \tableofcontents
-% \addcontentsline{toc}{chapter}{Table des matières}
 
 \listoffigures
-% \addcontentsline{toc}{chapter}{Liste des Figures}
 
 
 \cleardoublepage
@@ -214,6 +212,9 @@
 \label{chap:2}
 \input{chapitres/chapitre2.tex}
 
+\chapter{Analyse des défis et des enseignements}
+\label{chap:3}
+\input{chapitres/chapitre3.tex}
 
 \chapter*{Conclusion}
 \label{chap:conclusion}
@@ -233,20 +234,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \nocite{*}
 
-%\phantomsection{}
-%\addcontentsline{toc}{chapter}{Webography}
-%\printbibliography[title={Webography},type=online]
-
-%\phantomsection{}
-%\addcontentsline{toc}{chapter}{Bibliography}
-%\printbibliography[title={Bibliography},nottype=online]
-
-%\printbibheading %exemple de bibliographie divisée en sections. Pour ajouter des oeuvres non citées,utiliser \nocite
-
-%\printbibliography[keyword=pratique,heading=subbibliography,title={Théories littéraires dans les jeux vidéo}]
-%\printbibliography[keyword=litteraire,heading=subbibliography,title={Narratologie et structuralisme}]
-
-%\printbibliography[keyword=jeu,heading=subbibliography,title={\emph{Games studies}}]
 
 \bibliographystyle{apalike}
 %\bibliographystyle{plain}
@@ -256,9 +243,5 @@
 \cleardoublepage%
 
 \addtocontents{toc}{\protect\setcounter{tocdepth}{3}}
-
-% \printglossaries
-% \printindex
-
 
 \end{document}
