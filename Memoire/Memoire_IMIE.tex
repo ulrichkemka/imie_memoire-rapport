@@ -19,8 +19,6 @@
 \providecommand{\keywords}[1]{\textbf{\textit{Mots clés---}} #1}
 \providecommand{\keywordss}[1]{\textbf{\textit{Keywords---}} #1}
 
-\usepackage[style=authoryear, backend=biber]{biblatex}
-\addbibresource{./chapitres/Biblio.bib}  % Pour charger votre fichier .bib
 
 
 \usepackage{etoolbox}
@@ -72,7 +70,7 @@ Optimisation des Algorithmes de Deep Learning pour la Détection et la Reconnais
 }
 
 
-\newcommand{\IMIE} {%
+\newcommand{\IMIE} {
 \\ Ecole Supérieure d'informatique IMIE-Paris
 }
 
@@ -88,6 +86,9 @@ Optimisation des Algorithmes de Deep Learning pour la Détection et la Reconnais
 \renewcommand{\contentsname}{Table des matières}
 \renewcommand{\listfigurename}{Liste des Figures}
 \renewcommand{\listtablename}{Liste des Tableaux}
+\renewcommand{\bibname}{Bibliographie}
+\renewcommand{\appendixname}{Annexe}
+
 
 % used in maketitle
 \title{\reportSubject}
@@ -103,9 +104,9 @@ Optimisation des Algorithmes de Deep Learning pour la Détection et la Reconnais
 \usepackage[acronym,toc,section=chapter]{glossaries}
 \makeglossaries
 
-\newacronym{abc}{ABC}{A contrived acronym}
-\newacronym{efg}{EFG}{Another acronym}
-\newacronym{svm}{SVM}{Support Vector Machines}
+\newacronym{abc}{ABC}{A contrived acronym testet IUKR}
+\newacronym{efg}{EFG}{Another fdfgfgfgfddfdr}
+\newacronym{svm}{SVM}{Support Vector ffffff}
 
 \pagenumbering{roman} 
 
@@ -172,6 +173,7 @@ Optimisation des Algorithmes de Deep Learning pour la Détection et la Reconnais
 \input{chapitres/dedicace.tex}
 
 \chapter*{Remerciements}
+\addcontentsline{toc}{chapter}{Remerciements}
 \input{./chapitres/thank.tex}
 
 \chapter*{Résumé}
@@ -182,6 +184,8 @@ Optimisation des Algorithmes de Deep Learning pour la Détection et la Reconnais
 \input{./chapitres/abstract.tex}
 
 \tableofcontents
+\addcontentsline{toc}{chapter}{Table des matières}
+
 
 \listoffigures
 \listoftables
@@ -209,11 +213,21 @@ Optimisation des Algorithmes de Deep Learning pour la Détection et la Reconnais
 \label{chap:conclusion}
 \input{chapitres/conclusion.tex}
 
-
-\appendix
 \newpage
 \renewcommand{\thepage}{\Alph{page}}
 \pagenumbering{Alph}
+
+% \bibliographystyle{apalike}
+\bibliographystyle{plain}
+
+\bibliography{./chapitres/Biblio.bib}
+
+
+% \printglossaries
+\printglossary[type=\acronymtype, title={Liste des acronymes}]
+
+
+\appendix
 
 \input{chapitres/annexes.tex}
 
@@ -223,34 +237,9 @@ Optimisation des Algorithmes de Deep Learning pour la Détection et la Reconnais
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \nocite{*}
 
-\phantomsection{}
-\addcontentsline{toc}{chapter}{Webography}
-\printbibliography[title={Webography},type=online]
 
-\phantomsection{}
-\addcontentsline{toc}{chapter}{Bibliography}
-\printbibliography[title={Bibliography},nottype=online]
-
-\printbibheading %exemple de bibliographie divisée en sections. Pour ajouter des oeuvres non citées,utiliser \nocite
-
-\printbibliography[keyword=pratique,heading=subbibliography,title={Théories littéraires dans les jeux vidéo}]
-\printbibliography[keyword=litteraire,heading=subbibliography,title={Narratologie et structuralisme}]
-
-\printbibliography[keyword=jeu,heading=subbibliography,title={\emph{Games studies}}]
-
-% \bibliographystyle{apalike}
-% %\bibliographystyle{plain}
-
-% \bibliography{Biblio.bib}
-
-\printbibliography
-
-
-\cleardoublepage%
+\cleardoublepage
 
 \addtocontents{toc}{\protect\setcounter{tocdepth}{3}}
-
-% \printglossaries
-% \printindex
 
 \end{document}
