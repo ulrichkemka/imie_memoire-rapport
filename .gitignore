@@ -10,3 +10,17 @@
 *.lot
 *.gz
 *.toc
+*.bcf
+*.out
+*.run.xml
+*.bbl
+*.blg
+*.glg
+*.gls
+*.alg
+*.acr
+
+
+Anciens_rapports/
+Tools/
+*old.tex
