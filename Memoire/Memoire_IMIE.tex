@@ -46,6 +46,8 @@
 
 % Ajouter hyperref pour les liens cliquables
 \usepackage[hidelinks]{hyperref}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{float}
 
 \setcounter{secnumdepth}{3}
 
@@ -104,7 +106,7 @@ Optimisation des Algorithmes de Deep Learning pour la Détection et la Reconnais
 \input{./chapitres/acronyms.tex}
 
 
-\pagenumbering{roman} 
+% \pagenumbering{roman} 
 
 \usepackage[utf8]{inputenc}
 
@@ -185,22 +187,20 @@ Optimisation des Algorithmes de Deep Learning pour la Détection et la Reconnais
 
 \listoffigures
 \listoftables
-\listofalgorithms
-\addcontentsline{toc}{chapter}{Liste des algorithmes}
 \cleardoublepage
 
 \newpage
-\pagenumbering{arabic}
-\chapter*{Introduction}
+% \pagenumbering{arabic}
+\chapter{Introduction}
 \label{chap:intorduction}
 \input{./chapitres/introduction.tex}
 
 
-\chapter{Données étudiés}%
+\chapter{Titre du chapitre 1}
 \label{chap:1}
 \input{./chapitres/chapitre1.tex}
 
-\chapter{Modèles utilisés et Applications}
+\chapter{Titre du chapitre 2}
 \label{chap:2}
 \input{chapitres/chapitre2.tex}
 
