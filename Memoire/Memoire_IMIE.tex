@@ -12,6 +12,8 @@
 \usepackage[lined,boxed,commentsnumbered, english, ruled,vlined,linesnumbered, french]{algorithm2e}
 \usepackage{amsthm}
 
+\usepackage{subcaption}
+\usepackage{tabularx}
 
 
 \providecommand{\keywords}[1]{\textbf{\textit{Mots clés---}} #1}
@@ -84,8 +86,8 @@ Optimisation des Algorithmes de Deep Learning pour la Détection et la Reconnais
 
 \renewcommand{\chaptername}{Chapitre}
 \renewcommand{\contentsname}{Table des matières}
-\renewcommand{\listfigurename}{Liste des Figures}
-\renewcommand{\listtablename}{Liste des Tableaux}
+\renewcommand{\listfigurename}{Liste des figures}
+\renewcommand{\listtablename}{Liste des tableaux}
 \renewcommand{\bibname}{Bibliographie}
 \renewcommand{\appendixname}{Annexe}
 
@@ -101,9 +103,9 @@ Optimisation des Algorithmes de Deep Learning pour la Détection et la Reconnais
 \usepackage{graphics}
 \usepackage{graphicx}
 
-\usepackage[acronym,toc,section=chapter]{glossaries}
-\makeglossaries
-\input{./chapitres/acronyms.tex}
+% \usepackage[acronym,toc,section=chapter]{glossaries}
+% \makeglossaries
+% \input{./chapitres/acronyms.tex}
 
 
 % \pagenumbering{roman} 
@@ -184,29 +186,23 @@ Optimisation des Algorithmes de Deep Learning pour la Détection et la Reconnais
 \tableofcontents
 \addcontentsline{toc}{chapter}{Table des matières}
 
-
+\input{./chapitres/acronyms.tex}
 \listoffigures
 \listoftables
 \cleardoublepage
 
 \newpage
 % \pagenumbering{arabic}
-\chapter{Introduction}
-\label{chap:intorduction}
+
 \input{./chapitres/introduction.tex}
 
 
-\chapter{Titre du chapitre 1}
-\label{chap:1}
-\input{./chapitres/chapitre1.tex}
-
-\chapter{Titre du chapitre 2}
-\label{chap:2}
 \input{chapitres/chapitre2.tex}
 
 
-\chapter*{Conclusion}
-\label{chap:conclusion}
+\input{./chapitres/chapitre3.tex}
+
+
 \input{chapitres/conclusion.tex}
 
 \newpage
@@ -220,7 +216,7 @@ Optimisation des Algorithmes de Deep Learning pour la Détection et la Reconnais
 
 
 % \printglossaries
-\printglossary[type=\acronymtype, title={Liste des acronymes}]
+% \printglossary[type=\acronymtype, title={Liste des acronymes}]
 
 
 \appendix
