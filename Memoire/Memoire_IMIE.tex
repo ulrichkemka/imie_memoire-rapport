@@ -59,6 +59,34 @@
 %\usepackage{sagetex}
 
 
+\usepackage{listings}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+
+
 \newcommand{\reportTitle} {
   \textsc{Projet de Fin d'\'etudes}
 }
@@ -102,6 +130,7 @@ Optimisation des Algorithmes de Deep Learning pour la Détection et la Reconnais
 
 \usepackage{graphics}
 \usepackage{graphicx}
+\usepackage{amsmath}
 
 % \usepackage[acronym,toc,section=chapter]{glossaries}
 % \makeglossaries
@@ -219,9 +248,9 @@ Optimisation des Algorithmes de Deep Learning pour la Détection et la Reconnais
 % \printglossary[type=\acronymtype, title={Liste des acronymes}]
 
 
-\appendix
+% \appendix
 
-\input{chapitres/annexes.tex}
+% \input{chapitres/annexes.tex}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
