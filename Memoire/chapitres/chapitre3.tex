@@ -190,7 +190,7 @@ Plusieurs facteurs sont cependant à prendre en compte.
 Nous avons tout de même pu constituer, à partir d’une recherche limitée pour certains modèles de véhicules militaires, un premier corpus composé de \textbf{669 images}. Nous avons annoté manuellement ces 669 images avec quatre classes.\\
 
 
-\subsubsection{Etapes de collecte}
+\subsubsection{Etapes de la collecte des images}
 
 Nous avons reparti la collecte en deux grandes étapes:\\
 
@@ -375,10 +375,12 @@ Nous avons utilisé des méthodes d'augmentation des données afin d'améliorer 
     \item Enfin, nous avons entraîné le modèle YOLO avec ce dataset augmenté.
 \end{enumerate}
 
-Après l'augmentation des images, nous avons pu collecter en plus du dataset existant, \textbf{6670 images}.
+Après l'augmentation des images, nous avons pu collecter en plus du dataset existant, \textbf{8403 images}.\\
 
 
-\subsubsection*{Dataset ImageNet, OpenImages, Russian Military Annotated (Roboflow), Google et images transformées : 6670 images}
+\subsubsection*{Résultats des tests avec différentes tailles du modèle YoloV8 et paramètres d'Epoch}
+Nous avons entrainé notre modèles avec tous les jeux de données :
+\textbf{Dataset ImageNet, OpenImages, Roboflow, Google et images transformées}, pour un total de 8403 images de véhicules militaires.
 
 \paragraph{yolov8m :}
 \begin{itemize}
