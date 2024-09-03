@@ -594,10 +594,74 @@ Sur ce schéma, nous présentons une trame de fonctionnement du modèle text2ima
 
 \subsubsection{Images générées}
 
-Plusieurs modèles de Stable Diffusion ont été utilié durant cette expérience. 
+Plusieurs modèles de Stable Diffusion ont été utilié durant cette expérience.
+
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{./images/v1-5_sd_dreambooth.png}
+    \caption{prompts + Images générés avec le modèle stable-diffusion v1.5}
+    \label{fig:image_sdv15}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./images/v2_tank-city_ruins-1.png}
+        \caption{Dans les ruines de la ville}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./images/v2_tank-rainy_day-3.png}
+        \caption{Par un jour pluvieux}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./images/v2_tank-river_crossing-0.png}
+        \caption{Traversée de rivière}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./images/v2_tank-snow-1.png}
+        \caption{Sous la neige}
+    \end{subfigure}
+    \caption{Images générés avec le modèle stable-diffusion v2}
+    \label{fig:image_sdv2}
+\end{figure}
 
 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./images/xl_tank-desert-3.png}
+        \caption{Dans le désert}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./images/xl_tank-desert_storm-2.png}
+        \caption{Tempête de sable dans le désert}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./images/xl_tank-fog-2.png}
+        \caption{Dans le brouillard}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./images/xl_tank-urban_combat-1.png}
+        \caption{Combat urbain}
+    \end{subfigure}
+    \caption{Images générés avec le modèle stable-diffusion XL}
+    \label{fig:image_sdxl}
+\end{figure}
 
 
+Contrairement à la technique de transformation d'images, la génération d'images synthétiques ne fournit pas les anotations des véhicules présents sur les images.
+Après la génération des ces images, elles doivent être validés par l'équipe de la DGA TT avant d'être annotées.
+
+Nous continuons les expériences en modifiant les valeurs des hyperparamètres des différents modèles afin d'obtenir des images réalistes et optimales nécessaire à l'entrainement de notre modèle de detection d'objet dans les images.
 
 
