@@ -11,6 +11,11 @@
 \makeindex
 \usepackage[lined,boxed,commentsnumbered, english, ruled,vlined,linesnumbered, french]{algorithm2e}
 \usepackage{amsthm}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{array}
+
 
 
 
@@ -170,6 +175,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \tableofcontents
+\addcontentsline{toc}{chapter}{Table des matières}
 
 \listoffigures
 
@@ -204,7 +210,7 @@
 \renewcommand{\thepage}{\Alph{page}}
 \pagenumbering{Alph}
 
-\input{chapitres/annexes.tex}
+% \input{chapitres/annexes.tex}
 
 
 

@@ -325,9 +325,9 @@ Après avoir entraîné notre model avec notre jeu de donnée, nous utilisons le
 Nous avons utilisé des méthodes d'augmentation des données afin d'améliorer la capacité du modèle à reconnaître des véhicules même lorsqu'ils sont éloignés ou partiellement masqués. Les méthodes utilisées incluent :
 
 \begin{itemize}
-    \item Une transformation \textbf{scale} pour dézoomer l'image et donner l'impression que le véhicule est vu de loin.
-    \item Une transformation \textbf{XYMasking} pour masquer des bandes horizontales ou verticales, simulant un véhicule caché par un obstacle.
-    \item Une transformation de type \textbf{Météo} pour donner l'impression qu'il y a de la neige, de la pluie ou du brouillard sur l'image.
+	\item Une transformation \textbf{scale} pour dézoomer l'image et donner l'impression que le véhicule est vu de loin. (Figure \ref{fig:scale_transformed})
+	\item Une transformation \textbf{XYMasking} pour masquer des bandes horizontales ou verticales, simulant un véhicule caché par un obstacle. (Figure \ref{fig:xymasking})
+	\item Une transformation de type \textbf{Météo} pour donner l'impression qu'il y a de la neige, de la pluie ou du brouillard sur l'image. (Figure \ref{fig:meteo})
 \end{itemize}
 
 
