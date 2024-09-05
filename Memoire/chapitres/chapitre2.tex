@@ -42,13 +42,13 @@ Avec l'émergence des \textbf{réseaux de neurones convolutifs} (CNN), une nouve
 
 \textbf{YOLOv3} \cite{redmon2016yolo} est particulièrement notable pour sa rapidité et son efficacité dans les applications en temps réel. Contrairement à d'autres modèles, YOLOv3 divise l'image en une grille et prédit simultanément plusieurs boîtes englobantes et leurs probabilités de classe, ce qui le rend extrêmement rapide. Cependant, cette rapidité se fait parfois au détriment de la précision, surtout pour les objets de petite taille ou partiellement occultés. Néanmoins, YOLOv3 reste un choix privilégié pour les applications nécessitant une détection rapide avec une précision acceptable, que ce soit pour des images capturées à partir d'une caméra embarquée, de vidéosurveillance, ou de systèmes aéroportés \cite{gupta2021}.
 
-\textbf{SSD (Single Shot MultiBox Detector)} \cite{liu2016ssd} offre également une approche rapide mais légèrement plus précise que YOLO pour les objets de taille moyenne à grande. SSD divise l'image en plusieurs couches de caractéristiques, chacune spécialisée dans la détection d'objets de différentes tailles, ce qui améliore la précision tout en conservant une bonne vitesse d'inférence. Ce modèle est adapté à une grande variété d'applications, qu'il s'agisse de la surveillance vidéo, de la détection de véhicules dans des environnements urbains, ou de l'analyse d'images capturées par des drones \cite{kamran2020}.
+\textbf{SSD} \cite{liu2016ssd} offre également une approche rapide mais légèrement plus précise que YOLO pour les objets de taille moyenne à grande. SSD divise l'image en plusieurs couches de caractéristiques, chacune spécialisée dans la détection d'objets de différentes tailles, ce qui améliore la précision tout en conservant une bonne vitesse d'inférence. Ce modèle est adapté à une grande variété d'applications, qu'il s'agisse de la surveillance vidéo, de la détection de véhicules dans des environnements urbains, ou de l'analyse d'images capturées par des drones \cite{kamran2020}.
 
 Enfin, \textbf{Faster R-CNN} \cite{girshick2016rcnn} se distingue par sa précision supérieure, en particulier dans des environnements complexes où les objets sont petits ou partiellement cachés. Ce modèle utilise un réseau de propositions de région pour identifier les zones d'intérêt avant d'appliquer la classification, ce qui permet une détection plus précise. Cependant, cette approche est plus gourmande en ressources computationnelles et est moins adaptée aux environnements où les temps de réponse doivent être courts, comme dans les applications en temps réel nécessitant une haute précision \cite{kamran2020}.
 
 L'application de ces modèles aux images, qu'elles soient issues de drones, de caméras de surveillance ou d'autres sources, présente des défis uniques. Les objets détectés peuvent être de petite taille, camouflés ou situés dans des environnements visuellement encombrés. Ces facteurs compliquent la tâche des algorithmes de détection classiques, nécessitant des ajustements spécifiques dans les architectures de réseaux neuronaux et les techniques de prétraitement des données \cite{gupta2021}.
 
-De plus, l'utilisation de \textbf{datasets spécialisés} est cruciale pour entraîner ces modèles à détecter des objets dans des contextes variés. Par exemple, Kamran et al. \cite{kamran2020} ont développé un dataset spécifique pour la détection de véhicules militaires, combinant des images réelles et synthétiques, ce qui permet de pallier le manque de données réelles disponibles pour l'entraînement des modèles.
+De plus, l'utilisation de \textbf{datasets spécialisés} est importante pour entraîner ces modèles à détecter des objets dans des contextes variés. Par exemple, Kamran et al. \cite{kamran2020} ont développé un dataset spécifique pour la détection de véhicules militaires, combinant des images réelles et synthétiques, ce qui permet de pallier le manque de données réelles disponibles pour l'entraînement des modèles.
 
 Enfin, les techniques de \textbf{génération de données synthétiques}, comme celles basées sur les GANs (Generative Adversarial Networks), sont de plus en plus utilisées pour enrichir les datasets et améliorer la robustesse des modèles de détection face à la variabilité des conditions d'acquisition des images, qu'il s'agisse d'images de terrain, aériennes ou issues de caméras fixes \cite{spie2020}.
 
@@ -92,11 +92,95 @@ Les approches modernes pour la détection des véhicules militaires utilisent pr
 
 Parmi ces architectures, Faster R-CNN a démontré une supériorité dans plusieurs études en raison de sa capacité à générer rapidement des propositions de régions et à classifier les objets avec une grande précision. Cependant, pour des véhicules de petite taille ou dans des contextes de faible contraste, des ajustements spécifiques des hyperparamètres et des techniques de data augmentation sont souvent nécessaires pour améliorer les performances des modèles \cite{gupta2021}.
 
-YOLOv3, de son côté, est favorisé pour les applications nécessitant une détection rapide et est capable de traiter des images en temps réel, ce qui est crucial dans des environnements où la rapidité d'intervention est primordiale. Bien que YOLOv3 soit légèrement moins précis que Faster R-CNN pour les objets de petite taille, il offre un bon compromis entre vitesse et précision dans des scénarios militaires \cite{gupta2021}.
+YOLOv3, de son côté, est favorisé pour les applications nécessitant une détection rapide et est capable de traiter des images en temps réel, ce qui est important dans des environnements où la rapidité d'intervention est primordiale. Bien que YOLOv3 soit légèrement moins précis que Faster R-CNN pour les objets de petite taille, il offre un bon compromis entre vitesse et précision dans des scénarios militaires \cite{gupta2021}.
 
-L'utilisation de \textbf{datasets spécialisés} est également cruciale. Par exemple, Kamran et al. \cite{kamran2020} ont développé un dataset spécifique pour la détection de véhicules militaires à partir d'images aériennes prises à basse altitude. Ce dataset combine des images réelles et des images synthétiques, permettant ainsi de pallier le manque de données réelles disponibles pour l'entraînement des modèles.
+L'utilisation de \textbf{datasets spécialisés} est également importante. Par exemple, Kamran et al. \cite{kamran2020} ont développé un dataset spécifique pour la détection de véhicules militaires à partir d'images aériennes prises à basse altitude. Ce dataset combine des images réelles et des images synthétiques, permettant ainsi de pallier le manque de données réelles disponibles pour l'entraînement des modèles.
 
-Enfin, les techniques de \textbf{génération de données synthétiques}, comme celles basées sur les GANs (Generative Adversarial Networks), sont de plus en plus utilisées pour enrichir les datasets et améliorer la robustesse des modèles de détection face à la variabilité des conditions d'acquisition des images \cite{spie2020}.
+Enfin, les techniques de \textbf{génération de données synthétiques}, comme celles basées sur les GANs, sont de plus en plus utilisées pour enrichir les datasets et améliorer la robustesse des modèles de détection face à la variabilité des conditions d'acquisition des images \cite{spie2020}.
+
+
+
+\section{Augmentation de données}
+
+La quantité et de la qualité des données d'apprentissage ont un impact majeur sur la précision et l’efficacité des algorithmes du Deep Learning pour des tâches telles que la reconnaissance d'images, la segmentation d'images, la détection d'objets, etc.
+Et même si nous sommes dans l’ère du Big data, la quantité des données disponible pour l'optimisation des ces algorithmes est parfois insuffisante.
+
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{./images/transfo_combi.png}
+    \caption{Un exemple d'application d'une combinaison de transformations.}
+    \label{fig:exemple_transfo}
+\end{figure}
+
+
+\noindent Il existe plusieurs outils permettant d'augmenter des données.
+
+\subsection{Données augmentées}
+
+Les données augmentées proviennent de données originales, auxquelles ont été appliquées des transformations mineures (comme la rotation d’une image ou l’ajout de bruit à une vidéo).
+
+Certaines techniques de transformation d’images couramment utilisées sont : \textbf{renversement, rotation, recadrage, ajustement de la luminosité, ajout de bruit}.
+
+\subsubsection{Scikit-image}
+C'est un package Python open source qui fonctionne avec des tableaux Numpy. Il implémente des algorithmes et des utilitaires destinés à être utilisés dans la recherche, l'éducation et les applications industrielles.
+Il s'agit d'une bibliothèque assez simple et intuitive, même pour ceux qui découvrent l'écosystème Python. Le code est de haute qualité et évalué par des pairs, écrit par une communauté active de bénévoles.
+
+\subsubsection{OpenCV-Python}
+OpenCV-Python (Open Source Computer Vision Library) est non seulement rapide (puisque l'arrière-plan est constitué de code écrit en C/C++), mais il est également facile à coder et à déployer (grâce au wrapper Python au premier plan).
+Cela en fait un excellent choix pour exécuter des programmes à forte intensité de calcul.
+
+\subsubsection{Albumentations}
+Albumentations est une bibliothèque d'augmentation d'image rapide et un wrapper facile à utiliser autour d'autres bibliothèques. Elle est basée sur Numpy, OpenCV, et imgaug, en choisissant le meilleur de chacun d’eux.
+Elle a été écrite par des compétiteurs sur Kaggle et a été utilisée pour obtenir d'excellents résultats dans de nombreuses compétitions de Deep Learning sur Kaggle, Topcoder, CVPR, et MICCAI.
+
+\subsection{Données synthétiques}
+
+Les données synthétiques sont générées artificiellement sans référence directe au monde réel.
+La plupart du temps, elles sont produites par des réseaux génératifs adverses (GANs) ou des modèles de diffusion.
+
+\subsubsection{DreamBooth}
+DreamBooth est une technique d'apprentissage qui met à jour l'ensemble d’un modèle de diffusion en s'entraînant sur seulement quelques images d'un sujet ou d'un style spécifique.
+Elle fonctionne en associant un mot spécial dans un prompt avec quelques exemples d'images pour permettre la personnalisation de la génération d'images \cite{ruiz2023dreambooth}.
+
+
+\subsubsection{Stable Diffusion}
+Stable Diffusion est une autre technique d'apprentissage pour la génération d'images synthétiques.
+Elle permet de générer des images réalistes à partir de textes descriptifs (Text-to-Image), en se basant sur un modèle de diffusion entraîné sur un très large ensemble de données d'images.
+Ce modèle est ouvert et permet des ajustements et des personnalisations pour diverses applications, y compris l'intégration de nouveaux concepts à partir d'ensembles d'images spécifiques.
+
+Ci-dessous, nous avons deux graphes présentant les scores de quelques versions du modèle Stable Diffusion:
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./images/graph-sdv1.jpg}
+        \caption{}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./images/graph-sdv2.jpg}
+        \caption{}
+    \end{subfigure}
+    \caption{Évaluations avec différentes version de Stable Diffusion. \cite{rombach2021highresolution}}
+    \label{fig:comparaison_sd}
+\end{figure}
+
+
+Sur ce schéma, nous présentons une trame de fonctionnement du modèle text2image
+\begin{figure}[H]
+    \center
+    \includegraphics[width=\textwidth]{./images/shema_sd.png}
+    \caption{Schéma du fonctionnement normal de Stable Diffusion}
+\end{figure}
+
+
+\subsubsection{LoRA (Low-Rank Adaptation)}
+LoRA est une méthode d'adaptation fine qui permet de fine-tuner un modèle de diffusion sans avoir à modifier l'ensemble des poids du modèle.
+Elle permet une adaptation plus légère et plus rapide du modèle en ajoutant des couches d'apprentissage réduites (low-rank layers) à l'architecture existante.
+Cette méthode est particulièrement efficace pour personnaliser des modèles comme Stable Diffusion sur de nouveaux jeux de données sans nécessiter autant de ressources computationnelles que DreamBooth.
+
 
 \section{Étude Comparative des Approches}
 

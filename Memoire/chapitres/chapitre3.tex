@@ -23,7 +23,7 @@ La reconnaissance nécessite la définition d'une classification des véhicules 
 L'identification est la capacité à identifier précisément un objet cible. L'identification par enregistrement s'appuie sur des clés d'identification spécifiques pour chaque matériel. Dans le cadre de ce projet, l'identification est laissée hors périmètre.
 
 
-\section{Modèle d'entraînement}
+\section{Modèles d'entraînement}
 
 Les algorithmes de l’état de l’art proposés dans le cadre de ce projet sont :
 
@@ -140,7 +140,7 @@ Parmi ces classes, une classe Tank contient \textbf{1248 images annotées de vé
 
 \begin{figure}[H]
     \center
-    \includegraphics[width=0.5\textwidth]{./images/char-leclerc-openv7.png}
+    \includegraphics[width=0.4\textwidth]{./images/char-leclerc-openv7.png}
     \caption[Image annotée d’un char]{Image annotée d’un char, extraite du jeu de données Open Images v7.}\label{fig:image-annotée-char}
 \end{figure}
 
@@ -179,7 +179,7 @@ Plusieurs facteurs sont cependant à prendre en compte.
     \item Premièrement, les images que l’on peut trouver ne sont pas annotées, et demandent donc un travail supplémentaire d’annotation manuelle.
           \begin{figure}[H]
               \center
-              \includegraphics[width=0.6\textwidth]{./images/anotation-manuelle.png}
+              \includegraphics[width=0.5\textwidth]{./images/anotation-manuelle.png}
               \caption{Annotation manuelle d’une image d’engin blindé du génie.}\label{fig:anotation-manuelle}
           \end{figure}
     \item Deuxièmement, ces images servent principalement à répondre aux attentes des utilisateurs d’un moteur de recherche, et ne correspondent pas nécessairement aux critères attendus pour l’entraînement d’un algorithme de détection d’objets.
@@ -236,50 +236,43 @@ La précision (\textbf{mAP : Mean Average Precision}) de notre modèle sera rele
 
 
 \subsection*{Prepare-01: ImageNet, OpenImages, Roboflow (2666 images)}
+\label{results-prepare01}
+
 
 A cette étape, le modèle détecte uniquement une classe 'tank', donc la mAP sera une moyenne de toutes les images.
 
 Nous avons essayé plusieurs scénarios sur l’algorithme en changeant le paramètres \textit{Epoch} (époques: passe complète à travers toutes les instances de dataset d'entraînement.) et la taille du modèles.
 
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 
-\begin{itemize}
-    \item \textbf{yolov8m :}
-          \begin{itemize}
-              \item \textbf{Avec images non annotées :}
-                    \begin{itemize}
-                        \item Epoch = 60 $\Rightarrow$ mAP = 0.660601
-                        \item Epoch = 80 $\Rightarrow$ mAP = 0.6548
-                        \item Epoch = 100 $\Rightarrow$ mAP = 0.6476
-                    \end{itemize}
-              \item \textbf{Sans images non annotées :}
-                    \begin{itemize}
-                        \item Epoch = 60 $\Rightarrow$ mAP = 0.71369
-                        \item Epoch = 70 $\Rightarrow$ mAP = 0.692007695
-                        \item Epoch = 80 $\Rightarrow$ mAP = 0.70
-                        \item Epoch = 100 $\Rightarrow$ mAP = 0.70
-                    \end{itemize}
-          \end{itemize}
 
-    \item \textbf{yolov8l :}
-          \begin{itemize}
-              \item \textbf{Avec images non annotées :}
-                    \begin{itemize}
-                        \item Epoch = 60 $\Rightarrow$ mAP = 0.6512
-                        \item Epoch = 80 $\Rightarrow$ mAP = 0.6491
-                        \item Epoch = 100 $\Rightarrow$ mAP = 0.6384
-                    \end{itemize}
-          \end{itemize}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|C{2cm}|C{4cm}|C{2cm}|C{2cm}|}
+        \hline
+        \textbf{Modèle} & \textbf{Images négatives} & \textbf{Epoch} & \textbf{mAP} \\ \hline
+        \multirow{3}{*}{yolov8m}
+                        & \multirow{3}{*}{Oui}      & 60             & 0.6606       \\ \cline{3-4}
+                        &                           & 80             & 0.6548       \\ \cline{3-4}
+                        &                           & 100            & 0.6476       \\ \cline{2-4}
+                        & \multirow{4}{*}{Non}      & 60             & 0.7137       \\ \cline{3-4}
+                        &                           & 70             & 0.6920       \\ \cline{3-4}
+                        &                           & 80             & 0.7000       \\ \cline{3-4}
+                        &                           & 100            & 0.7000       \\ \hline
+        \multirow{3}{*}{yolov8l}
+                        & \multirow{3}{*}{Oui}      & 60             & 0.6512       \\ \cline{3-4}
+                        &                           & 80             & 0.6491       \\ \cline{3-4}
+                        &                           & 100            & 0.6384       \\ \hline
+        \multirow{3}{*}{yolov8x}
+                        & \multirow{3}{*}{Oui}      & 60             & 0.6518       \\ \cline{3-4}
+                        &                           & 80             & 0.6535       \\ \cline{3-4}
+                        &                           & 100            & 0.6308       \\ \hline
+    \end{tabular}
+    \caption{Résultats des entraînements à l’étape Prepare-01 (2666 images)}
+    \label{tab:train-prepare01}
+\end{table}
 
-    \item \textbf{yolov8x :}
-          \begin{itemize}
-              \item \textbf{Avec images non annotées :}
-                    \begin{itemize}
-                        \item Epoch = 60 $\Rightarrow$ mAP = 0.6518
-                        \item Epoch = 80 $\Rightarrow$ mAP = 0.6535
-                        \item Epoch = 100 $\Rightarrow$ mAP = 0.6308
-                    \end{itemize}
-          \end{itemize}
-\end{itemize}
+
 
 
 Au vu de ces résultats, nous nous sommes rendu compte que la taille du modèle n'influence pas les résultats. Nous allons donc uniquement travailler avec la taille medium du modèle YoloV8.
@@ -287,22 +280,30 @@ Nous allons également utiliser des datasets contenant des images annotées.
 
 
 \subsection*{Prepare-02: ImageNet, OpenImages, Roboflow and Google  (3335 images)}
+\label{results-prepare02}
 
 A cette étape, nous avons entraîné le modèle a détecter les 04 classes (AFV, APC, MEV, LAV).
 La moyenne mAP tient donc compte de ces 04 classes, mais nous allons aussi fournir la moyenne de chacune des classes.
 
-\begin{itemize}
-    \item \textbf{yolov8m :}
-          \begin{itemize}
-              \item Epoch = 60 $\Rightarrow$ mAP = 0.6609276140054803
-          \end{itemize}
-\end{itemize}
+\textbf{yolov8m :}  Epoch = 60 $\Rightarrow$ mAP = 0.6609276140054803
 
-\begin{figure}[H]
-    \center
-    \includegraphics[width=0.6\textwidth]{./images/map-train.png}
-    \caption[mAP des 04 classes]{mAP des 04 classes}\label{fig:map-train}
-\end{figure}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{Classes} & \textbf{Précision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Support} \\ \hline
+        AFV              & 0.76               & 0.85            & 0.80              & 343              \\ \hline
+        APC              & 0.69               & 0.72            & 0.70              & 64               \\ \hline
+        LAV              & 0.55               & 0.72            & 0.62              & 25               \\ \hline
+        MEV              & 0.62               & 0.71            & 0.67              & 7                \\ \hline
+        micro avg        & 0.74               & 0.82            & 0.78              & 439              \\ \hline
+        macro avg        & 0.65               & 0.75            & 0.70              & 439              \\ \hline
+        weighted avg     & 0.74               & 0.82            & 0.78              & 439              \\ \hline
+    \end{tabular}
+    \caption{Résultats des entraînements à l'étape Prepare-02 (3335 images)}
+    \label{tab:map-train-01}
+\end{table}
+
 
 
 
@@ -325,9 +326,9 @@ Après avoir entraîné notre model avec notre jeu de donnée, nous utilisons le
 Nous avons utilisé des méthodes d'augmentation des données afin d'améliorer la capacité du modèle à reconnaître des véhicules même lorsqu'ils sont éloignés ou partiellement masqués. Les méthodes utilisées incluent :
 
 \begin{itemize}
-	\item Une transformation \textbf{scale} pour dézoomer l'image et donner l'impression que le véhicule est vu de loin. (Figure \ref{fig:scale_transformed})
-	\item Une transformation \textbf{XYMasking} pour masquer des bandes horizontales ou verticales, simulant un véhicule caché par un obstacle. (Figure \ref{fig:xymasking})
-	\item Une transformation de type \textbf{Météo} pour donner l'impression qu'il y a de la neige, de la pluie ou du brouillard sur l'image. (Figure \ref{fig:meteo})
+    \item Une transformation \textbf{scale} pour dézoomer l'image et donner l'impression que le véhicule est vu de loin. (Figure \ref{fig:scale_transformed})
+    \item Une transformation \textbf{XYMasking} pour masquer des bandes horizontales ou verticales, simulant un véhicule caché par un obstacle. (Figure \ref{fig:xymasking})
+    \item Une transformation de type \textbf{Météo} pour donner l'impression qu'il y a de la neige, de la pluie ou du brouillard sur l'image. (Figure \ref{fig:meteo})
 \end{itemize}
 
 
@@ -378,99 +379,59 @@ Nous avons utilisé des méthodes d'augmentation des données afin d'améliorer 
 Après l'augmentation des images, nous avons pu collecter en plus du dataset existant, \textbf{8403 images}.\\
 
 
-\subsubsection*{Résultats des tests avec différentes tailles du modèle YoloV8 et paramètres d'Epoch}
-Nous avons entrainé notre modèles avec tous les jeux de données :
+\subsubsection{Résultats des entraînements du modèle (Etape Prepare-03) }
+\label{results-prepare03}
+
+Nous avons entraîné notre modèles avec tous les jeux de données :
 \textbf{Dataset ImageNet, OpenImages, Roboflow, Google et images transformées}, pour un total de 8403 images de véhicules militaires.
 
-\paragraph{yolov8m :}
-\begin{itemize}
-    \item Epoch = 60 $\Rightarrow$ mAP = 0.34253746508577226
-          \begin{verbatim}
-              precision    recall  f1-score   support
-         AFV       0.71      0.66      0.68       731
-         APC       0.59      0.57      0.58       100
-         LAV       0.51      0.41      0.46        56
-         MEV       0.22      0.40      0.29        10
-   micro avg       0.68      0.63      0.65       897
-   macro avg       0.51      0.51      0.50       897
-weighted avg       0.68      0.63      0.65       897
-    \end{verbatim}
+\textbf{yolov8m :}
+Epoch = 60 $\Rightarrow$ mAP = 0.34253746508577226
 
-    \item Epoch = 100 $\Rightarrow$ mAP = 0.3274801530457814
-          \begin{verbatim}
-              precision    recall  f1-score   support
-         AFV       0.67      0.66      0.67       731
-         APC       0.49      0.40      0.44       100
-         LAV       0.60      0.38      0.46        56
-         MEV       0.27      0.60      0.38        10
-   micro avg       0.64      0.61      0.63       897
-   macro avg       0.51      0.51      0.49       897
-weighted avg       0.65      0.61      0.63       897
-    \end{verbatim}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{Classe} & \textbf{Précision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Support} \\ \hline
+        AFV             & 0.71               & 0.66            & 0.68              & 731              \\ \hline
+        APC             & 0.59               & 0.57            & 0.58              & 100              \\ \hline
+        LAV             & 0.51               & 0.41            & 0.46              & 56               \\ \hline
+        MEV             & 0.22               & 0.40            & 0.29              & 10               \\ \hline
+        micro avg       & 0.68               & 0.63            & 0.65              & 897              \\ \hline
+        macro avg       & 0.51               & 0.51            & 0.50              & 897              \\ \hline
+        weighted avg    & 0.68               & 0.63            & 0.65              & 897              \\ \hline
+    \end{tabular}
+    \caption{Résultats des entraînements à l'étape Prepare-03 (8403 images)}
+    \label{tab:results_moy_prepare03}
+\end{table}
 
-    \item Epoch = 80 $\Rightarrow$ mAP = 0.40498063244882654
-          \begin{verbatim}
-              precision    recall  f1-score   support
-         AFV       0.73      0.62      0.67       731
-         APC       0.54      0.56      0.55       100
-         LAV       0.51      0.48      0.50        56
-         MEV       0.21      0.60      0.32        10
-   micro avg       0.67      0.61      0.64       897
-   macro avg       0.50      0.57      0.51       897
-weighted avg       0.69      0.61      0.64       897
-    \end{verbatim}
+\subsubsection{Moyenne des résultats des entraînements du modèle (Etape Prepare-03).}
 
-    \item Epoch = 70 $\Rightarrow$ mAP = 0.36426944310433346
-          \begin{verbatim}
-              precision    recall  f1-score   support
-         AFV       0.71      0.64      0.67       731
-         APC       0.57      0.55      0.56       100
-         LAV       0.51      0.38      0.43        56
-         MEV       0.26      0.60      0.36        10
-   micro avg       0.67      0.61      0.64       897
-   macro avg       0.52      0.54      0.51       897
-weighted avg       0.68      0.61      0.64       897
-    \end{verbatim}
+Nous avons quand tenu à faire des entraînements en testant encore les différentes versions du modèle yolov8 et les valeurs d'époques.
+Ci dessous, une synthèse des results:
 
-    \item Epoch = 90 $\Rightarrow$ mAP = 0.37367839713565054
-          \begin{verbatim}
-              precision    recall  f1-score   support
-         AFV       0.72      0.66      0.69       731
-         APC       0.63      0.54      0.58       100
-         LAV       0.49      0.45      0.47        56
-         MEV       0.26      0.50      0.34        10
-   micro avg       0.69      0.63      0.66       897
-   macro avg       0.53      0.54      0.52       897
-weighted avg       0.69      0.63      0.66       897
-    \end{verbatim}
-\end{itemize}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+        \hline
+        \multirow{2}{*}{\textbf{Modèles}} & \multirow{2}{*}{\textbf{Epoch}} & \multirow{2}{*}{\textbf{mAP}} & \multicolumn{4}{c|}{\textbf{Précision par classe}} & \multirow{2}{*}{\textbf{micro avg}}                      \\ \cline{4-7}
 
-\paragraph{yolov8l :}
-\begin{itemize}
-    \item Epoch = 80 $\Rightarrow$ mAP = 0.3595970594160545
-          \begin{verbatim}
-              precision    recall  f1-score   support
-         AFV       0.69      0.64      0.66       731
-         APC       0.53      0.52      0.52       100
-         LAV       0.45      0.45      0.45        56
-         MEV       0.24      0.50      0.32        10
-   micro avg       0.65      0.61      0.63       897
-   macro avg       0.48      0.53      0.49       897
-weighted avg       0.65      0.61      0.63       897
-    \end{verbatim}
+                                          &                                 &                               & AFV                                                & APC                                 & LAV  & MEV  &      \\ \hline
+        \multirow{5}{*}{\texttt{yolov8m}}
+                                          & 60                              & 0.343                         & 0.71                                               & 0.59                                & 0.51 & 0.22 & 0.68 \\ \cline{2-8}
+                                          & 70                              & 0.364                         & 0.71                                               & 0.57                                & 0.51 & 0.26 & 0.67 \\ \cline{2-8}
+                                          & 80                              & 0.405                         & 0.73                                               & 0.54                                & 0.51 & 0.21 & 0.67 \\ \cline{2-8}
+                                          & 90                              & 0.374                         & 0.72                                               & 0.63                                & 0.49 & 0.26 & 0.69 \\ \cline{2-8}
+                                          & 100                             & 0.327                         & 0.67                                               & 0.49                                & 0.60 & 0.27 & 0.64 \\ \hline
+        \multirow{2}{*}{\texttt{yolov8l}}
+                                          & 80                              & 0.360                         & 0.69                                               & 0.53                                & 0.45 & 0.24 & 0.65 \\ \cline{2-8}
+                                          & 100                             & 0.331                         & 0.69                                               & 0.63                                & 0.52 & 0.21 & 0.67 \\ \hline
+    \end{tabular}
+    \caption{Moyenne des résultats des entraînements à l'étape Prepare-03 (8403 images).}
+    \label{tab:results-moy-prepare03}
+\end{table}
 
-    \item Epoch = 100 $\Rightarrow$ mAP = 0.3306744746120061
-          \begin{verbatim}
-              precision    recall  f1-score   support
-         AFV       0.69      0.66      0.68       731
-         APC       0.63      0.49      0.55       100
-         LAV       0.52      0.43      0.47        56
-         MEV       0.21      0.40      0.28        10
-   micro avg       0.67      0.62      0.64       897
-   macro avg       0.51      0.49      0.49       897
-weighted avg       0.67      0.62      0.64       897
-    \end{verbatim}
-\end{itemize}
+
 
 
 \subsection{Images synthétiques}
@@ -480,7 +441,11 @@ Dans cette partie de travail nous allons générer des images synthétiques.
 Pour cette expérience, nous avons utilisé Dreambooth \cite{ruiz2023dreambooth} pour générer des images de véhicules militaires afin d'entraîner notre modèle de détection de véhicules.
 Notre modèle souffre d'un manque de diversité dans ses données d'entraînement disponibles, nous avons essayé améliorer notre jeu de données d'entraînement avec des images synthétiques générées par un modèle texte-image.
 Dreambooth est une méthode permettant de personnaliser les modèles texte-image avec seulement quelques images d'un sujet.
-DreamBooth est utiliser pour finetuner les différentes versions du modèle \textbf{Stable Diffusion} \cite{rombach2021highresolution}.\\
+DreamBooth est utilisé pour finetuner les différentes versions du modèle \textbf{Stable Diffusion} \cite{rombach2021highresolution}.\\
+
+
+décrire un peu plus stable-diffusion et dreambooth. 
+
 
 \subsubsection{Finetuning du modèle}
 
@@ -536,24 +501,6 @@ Dans ce cas nous avons utilisé la version XL de stable diffusion comme modèle 
     \label{tab:modeles}
 \end{table}
 
-Ci-dessous, nous avons deux graphes présentant les scores de quelques versions du modèle Stable Diffusion:
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{./images/graph-sdv1.jpg}
-        \caption{}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{./images/graph-sdv2.jpg}
-        \caption{}
-    \end{subfigure}
-    \caption{Évaluations avec différentes échelles d'orientation. \cite{rombach2021highresolution}}
-    \label{fig:comparaison_sd}
-\end{figure}
 
 
 \subsubsection{Génération d'images}
@@ -586,24 +533,21 @@ Ci-dessous nous avons un extrait de script permettant de générer les images:
     )
 \end{lstlisting}
 
-Sur ce schéma, nous présentons une trame de fonctionnement du modèle text2image
-\begin{figure}[H]
-    \center
-    \includegraphics[width=\textwidth]{./images/shema_sd.png}
-    \caption{Schéma du fonctionnement normal de Stable Diffusion}
-\end{figure}
 
 
 \subsubsection{Images générées}
 
-Plusieurs modèles de Stable Diffusion ont été utilié durant cette expérience.
+Plusieurs version du modèle Stable Diffusion ont été utilisé durant cette expérience.
 
 \begin{figure}[H]
     \center
-    \includegraphics[width=\textwidth]{./images/v1-5_sd_dreambooth.png}
+    \includegraphics[width=1\textwidth]{./images/v1-5_sd_dreambooth.png}
     \caption{prompts + Images générés avec le modèle stable-diffusion v1.5}
     \label{fig:image_sdv15}
 \end{figure}
+
+Tout d'abord, nous avons généré des images avec la version v1.5 de Stable Diffusion. 
+Arès avoir observé les résultats, nous avons poursuivi nos tests en utilisant une version plus récente du modèle.
 
 \begin{figure}[H]
     \centering
@@ -632,6 +576,9 @@ Plusieurs modèles de Stable Diffusion ont été utilié durant cette expérienc
     \label{fig:image_sdv2}
 \end{figure}
 
+
+Ensuite, nous avons utilisé la version v2 de Stable Diffusion pour générer des images dans différentes conditions météorologiques et contextes.
+Nous avons procédé à des expérimentations avec la version XL du modèle Stable-Diffusion, offrant de nouvelles améliorations en termes de détails et de précision des images générées.
 
 \begin{figure}[H]
     \centering
