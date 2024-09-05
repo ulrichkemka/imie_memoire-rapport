@@ -17,7 +17,7 @@ Ces articles fournissent une base solide pour comparer les différentes approche
 
 
 
-\section{Technologies de Détection d'Objets dans les Images}
+\section{Technologies de détection d'objets dans les Images}
 
 La détection d'objets dans les images a évolué rapidement avec l'avènement des techniques de deep learning. Traditionnellement, les méthodes de détection reposaient sur des techniques de traitement d'image basées sur des caractéristiques définies manuellement, telles que les transformées de Hough, les descripteurs de contours et les filtres de Sobel. Cependant, ces méthodes ont montré des limites importantes en termes de précision et de robustesse, particulièrement dans des environnements complexes où les objets peuvent varier en taille, orientation et conditions d'éclairage.
 
@@ -60,9 +60,9 @@ Enfin, les techniques de \textbf{génération de données synthétiques}, comme 
 \end{figure}
 
 
-\section{Détection de Véhicules Militaires}
+\section{Détection de véhicules militaires}
 
-\subsection{Enjeux et Défis Spécifiques}
+\subsection{Enjeux et défis spécifiques}
 
 La détection de véhicules militaires dans les images aériennes pose des défis particuliers qui ne sont pas rencontrés dans la détection de véhicules civils. Ces défis incluent le camouflage actif, la dissimulation dans des environnements naturels complexes, et la variabilité des configurations de véhicules militaires. Contrairement aux véhicules civils, les véhicules militaires peuvent varier considérablement en termes de taille, de forme et de coloration, ce qui complique davantage leur détection \cite{kamran2020}.
 
@@ -86,7 +86,7 @@ En outre, les véhicules militaires sont souvent capturés dans des conditions d
 \end{figure}
 
 
-\subsection{Approches Modernes pour la Détection des Véhicules Militaires}
+\subsection{Approches modernes pour la détection des véhicules militaires}
 
 Les approches modernes pour la détection des véhicules militaires utilisent principalement des techniques de deep learning, avec un accent sur les réseaux de neurones convolutifs (CNN). Quatre architectures principales sont souvent utilisées pour cette tâche : \textbf{Faster R-CNN}, \textbf{YOLOv3}, \textbf{R-FCN} (Region-based Fully Convolutional Networks), et \textbf{SSD} (Single Shot MultiBox Detector). Ces architectures ont montré leur efficacité pour détecter et classifier les véhicules militaires, même dans des environnements complexes et encombrés \cite{kamran2020, gupta2021}.
 
@@ -97,7 +97,6 @@ YOLOv3, de son côté, est favorisé pour les applications nécessitant une dét
 L'utilisation de \textbf{datasets spécialisés} est également importante. Par exemple, Kamran et al. \cite{kamran2020} ont développé un dataset spécifique pour la détection de véhicules militaires à partir d'images aériennes prises à basse altitude. Ce dataset combine des images réelles et des images synthétiques, permettant ainsi de pallier le manque de données réelles disponibles pour l'entraînement des modèles.
 
 Enfin, les techniques de \textbf{génération de données synthétiques}, comme celles basées sur les GANs, sont de plus en plus utilisées pour enrichir les datasets et améliorer la robustesse des modèles de détection face à la variabilité des conditions d'acquisition des images \cite{spie2020}.
-
 
 
 \section{Augmentation de données}
@@ -182,21 +181,21 @@ Elle permet une adaptation plus légère et plus rapide du modèle en ajoutant d
 Cette méthode est particulièrement efficace pour personnaliser des modèles comme Stable Diffusion sur de nouveaux jeux de données sans nécessiter autant de ressources computationnelles que DreamBooth.
 
 
-\section{Étude Comparative des Approches}
+\section{Étude comparative des approches}
 
-\subsection{Valeur des Modèles}
+\subsection{Valeur des modèles}
 
 Les articles analysés mettent en évidence l'efficacité des modèles de deep learning, en particulier des réseaux de neurones convolutifs (CNN), dans la détection de véhicules militaires. Les études de Kamran et al. \cite{kamran2020} et de Gupta et al. \cite{gupta2021} démontrent que les modèles comme YOLO et Faster R-CNN surpassent largement les méthodes traditionnelles en termes de précision et de rapidité de détection.
 
 Cependant, une comparaison plus détaillée révèle que chaque modèle a ses avantages et ses limitations. Par exemple, \textbf{YOLOv3} est rapide et adapté aux applications en temps réel, mais peut manquer de précision pour les objets de petite taille ou en partie occultés. À l'inverse, \textbf{Faster R-CNN} offre une meilleure précision, mais au prix d'une complexité computationnelle accrue, ce qui le rend moins adapté aux environnements où les ressources sont limitées.
 
-\subsection{Qualité des Données et Entraînement des Modèles}
+\subsection{Qualité des données et entraînement des modèles}
 
 L'efficacité des modèles de deep learning dépend fortement de la qualité et de la quantité des données utilisées pour leur entraînement. Kamran et al. \cite{kamran2020} soulignent l'importance de disposer de datasets spécialisés, comprenant à la fois des images réelles et synthétiques, pour pallier le manque de données disponibles. Dans le même temps, Gupta et al. \cite{gupta2021} montrent que l'utilisation de techniques de data augmentation est importante pour améliorer la robustesse des modèles face aux variations des conditions d'acquisition des images.
 
 La génération de données synthétiques, notamment via des GANs, est également discutée comme une solution viable pour enrichir les datasets et permettre aux modèles de mieux généraliser. Cependant, cette approche introduit de nouveaux défis, notamment en termes de validation des modèles sur des données réelles.
 
-\subsection{Modèles Utilisés et Performances}
+\subsection{Modèles utilisés et performances}
 
 Les performances des différents modèles sont évaluées en fonction de critères tels que la précision de la détection, le taux de faux positifs, et la robustesse face aux variations d'éclairage et de perspective. L'étude de Dijk et al. \cite{spie2020} compare les performances de plusieurs modèles sur des images à longue distance, montrant que les modèles comme \textbf{R-FCN} peuvent offrir un bon compromis entre précision et vitesse dans des environnements complexes.
 
@@ -217,7 +216,7 @@ Néanmoins, la comparaison entre les modèles met également en lumière le beso
     \label{tab:comparaison}
 \end{table}
 
-\subsection{Paramètres de Configuration des Modèles}
+\subsection{Paramètres de configuration des modèles}
 
 Les performances des modèles de deep learning dépendent fortement des paramètres de configuration utilisés pendant l'entraînement. Dans cette section, nous comparons les principaux paramètres de configuration pour les modèles étudiés dans les différents articles.
 
