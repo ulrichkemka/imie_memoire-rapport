@@ -1,8 +1,8 @@
 \sloppy
 
-Les ambitions de la mission Défense et Sécurité sont aujourd’hui implémentées à travers un centre d’excellence dédié au domaine de la Sécurité et Défense afin de faciliter le développement et le transfert à court, moyen et long terme de technologies issues de la Recherche.
+% Les ambitions de la mission Défense et Sécurité sont aujourd’hui implémentées à travers un centre d’excellence dédié au domaine de la Sécurité et Défense afin de faciliter le développement et le transfert à court, moyen et long terme de technologies issues de la Recherche.
 
-Ce chapitre est celui dans lequel nous allons présenter les projets sur les quels nous avons travailler, notre méthodologie de travail, leur analyse et les résultats obtenus durant notre alternance au seins de l'Inria.
+Ce chapitre est celui dans lequel nous allons présenter les projets sur lesquels nous avons travaillé, notre méthodologie de travail, leur analyse et les résultats obtenus durant notre alternance au sein d'inria.
 
 \section{Projet IntelLab : Application Web}
 
@@ -18,7 +18,8 @@ IntelLab est un environnement de \textbf{simulation, formation, et d’expérime
 \end{itemize}
 
 \subsection{Moyens mis à la disposition des équipes de développement}
-Dans le cadre de ce projet, l'équipe de développement est composée uniquement du responsable informatique et de moi-même. Cela signifie que nous avons adopté une approche \textit{agile et collaborative} pour gérer le projet.
+Dans le cadre de ce projet, l'équipe de développement est composée uniquement du responsable informatique et de moi-même. Nous avons adopté une approche \textit{agile et collaborative} pour gérer le projet.
+Cette méthode nous a permis de maximiser notre efficacité en encourageant une communication régulière et une adaptation rapide aux besoins et évolutions du projet.
 
 
 \subsection{Outils de gestion de projet}
@@ -30,7 +31,7 @@ En complément, des échanges bilatéraux hebdomadaires entre responsables et me
 
 Il était important de recueillir les exigences et attentes de l’application.
 Grâce à cela nous avons planifié notre travail en fonction des priorités et urgences. Cette planification a été faites sur GitLab sous forme d’issues différenciés par des labels (backend, frontend, bug, …).
-Ces labels nous permettent de déterminer dans quoi et ou à quelle partie correspondes les issues.
+Ces labels nous permettent de catégoriser et d'organiser les issues.
 
 \subsubsection{Planification des tâches}
 
@@ -57,8 +58,19 @@ Dans l’optique de rendre l’application plus générique afin qu’elle s’a
 Avant de commencer le développement de l’application, nous avons effectué une analyse approfondie du code et de l’infrastructure du projet.
 Ce qui nous a permis de mettre en place une logique de travail sur la restructuration de tout le projet.
 
-Nous avons fait une refonte complète de l’application. La refonte avait pour but de restructurer le code afin de pouvoir poursuivre le développement de fonctionnalités nouvelles et de nouvelles fonctionnalités.
-En parallèle, nous avons rédigé des tests unitaires et fonctionnelle pour garantir l'absence de détérioration dans la logique fonctionnelle de l'application après avoir effectué le remaniement du code que nous avons orchestré.
+Nous avons fait une refonte complète de l'application pour répondre à plusieurs objectifs : simplifier le code, améliorer la performance, et intégrer de nouvelles fonctionnalités demandées par les utilisateurs.\\
+
+\noindent Les travaux réalisés sont:
+
+\begin{itemize}
+	\item la suppression des parties de code redondantes ou obsolètes.
+	\item la restructuration des API REST en utilisant des méthodes appropriées comme \texttt{GET}, \texttt{PUT}, \texttt{DELETE} et \texttt{POST} au lieu de les regrouper sous une seule méthode \texttt{POST}.
+	\item l'isolation de chaque composant pour qu'il soit responsable d'une tâche précise, ce qui a réduit la complexité et amélioré la maintenabilité du code.
+	\item l'utilisation des hooks, des composants en fonction au lien des classes, pour tirer parti des fonctionnalités récentes de ReactJS.
+	\item la refonte de la navigation pour la rendre plus intuitive en introduisant des éléments interactifs plus clairs et des raccourcis qui facilitent la navigation, réduisant ainsi le temps d'adaptation des nouveaux utilisateurs.
+\end{itemize}
+
+Cette refonte a permis non seulement de rendre le code plus propre et plus facile à maintenir, mais aussi d'améliorer significativement la performance de l'application et l'expérience utilisateur.
 
 
 \subsubsection{Infrastructure des serveurs de développement et de production}
@@ -68,7 +80,7 @@ Nous avons choisi d'utiliser Docker comme environnement d'exécution, installé 
 La conteneurisation de nos serveurs nous offre une grande flexibilité dans la gestion des composants de notre application.
 Ce serveur sert à vérifier le bon fonctionnement de l'application avant sa mise en production.
 
-Les serveurs du backend, du frontend, du broker MQTT et de la base de données sont automatiquement installés dans l'environnement Docker des serveurs de développement et de production.
+Les containers du backend, du frontend, du broker MQTT et de la base de données sont automatiquement installés dans l'environnement Docker des serveurs de développement et de production.
 Cela est possible grâce au déploiement continu depuis GitLab que nous avons configuré, ce qui nous fait gagner énormément de temps pendant le déploiement.
 
 
@@ -122,13 +134,13 @@ Ils visent également à garantir la stabilité et la sécurité des données, �
 	\item \textbf{Outils de gestion des tests }: Nous utilisons l'outil de gestion des tests \textbf{vitest} coté frontend et \textbf{jest} coté backend pour suivre nos cas de test, les résultats des tests et les anomalies détectées.
 	      \begin{figure}[h]
 		      \center
-		      \includegraphics[scale=0.7]{./images/test_frontend_il.png}
+		      \includegraphics[scale=0.5]{./images/test_frontend_il.png}
 		      \caption[Rapport test frontend avec VITEST]{Rapport tests avec VITEST}\label{fig:test_frontend_il}
 	      \end{figure}
 	\item \textbf{Outils d'automatisation des test} : Nous utilisons les pipelines de GitLab pour automatiser l'exécution des tests.
 	      \begin{figure}[h]
 		      \center
-		      \includegraphics[scale=0.9]{./images/pipeline_tests.png}
+		      \includegraphics[scale=0.8]{./images/pipeline_tests.png}
 		      \caption[pipeline des tests automatiques]{pipeline des tests automatiques}\label{fig:pipeline_tests}
 	      \end{figure}
 \end{itemize}
@@ -142,7 +154,7 @@ Ils visent également à garantir la stabilité et la sécurité des données, �
 	\item \textbf{Critères d'acceptation} : Nous établissons des critères d'acceptation clairs pour chaque scénario de test, définissant ce qui est considéré comme un test réussi.
 \end{itemize}
 
-\begin{table}[h]
+\begin{table}[H]
 	\centering
 	\begin{tabular}{|p{1.1cm}|p{3cm}|p{3cm}|p{4cm}|p{3cm}|}
 		\hline
@@ -159,7 +171,7 @@ Ils visent également à garantir la stabilité et la sécurité des données, �
 
 \section{Projet IntelLab : Serveur de messagerie}
 
-Ce projet a beaucoup de similitudes que celui de l'application Web. Nous allons ressortir quelques paries avec leur différences :
+Ce projet a beaucoup de similitudes que celui de l'application Web. Nous allons ressortir quelques parties avec leur différences :
 
 
 \subsection{Contexte du projet}
@@ -167,7 +179,11 @@ Le contexte initial de ce projet est pratiquement le même que celui de l'applic
 Ce projet permet la simulation des scénarios de types sécurité économique.
 Ce type de scénario a exigé le développement d'un autre d'environnement car diffère du monde du renseignement militaire.
 Cette plateforme est née du fait qu'on doit recréer un environnement d’entreprise telles que des startups ou des équipes de recherche.
-Les objectifs la formation et la sensibilisation à la détection de signaux faibles précurseurs d’actions d’ingérence.
+Les objectifs sont la formation et la sensibilisation à la détection de signaux faibles précurseurs d’actions d’ingérence.
+
+Pour accomplir cela, nous avons mis en place un serveur d'envoi de mails qui simule l'envoi de messages électroniques entre des personnages fictifs au sein de cet environnement.
+Des scripts ont été créés pour initialiser les boîtes mail, gérer les sauvegardes, et générer ainsi qu'envoyer des emails.
+Ce système permet de recréer de manière réaliste les échanges typiques au sein d'une entreprise, afin de mieux préparer les utilisateurs à identifier des menaces potentielles dans un contexte réel.
 
 
 \subsection{Outils de gestion de projet}
@@ -175,13 +191,13 @@ Comme pour les autres projets, nous sommes une équipe de deux personnes, le res
 
 \subsubsection{Planification des tâches}
 Comme pour l'autre projet, nous avons centralisé la gestion de ce projet sur la plateforme GitLab.
-La description des taches, la gestion du code, collaboration en temps réel, l’intégration continue et le déploiement automatique, toutes ses fonctionnalités sont gérées sur la plateforme GitLab.
+La description des taches, la gestion du code, collaboration en temps réel, l’intégration continue et le déploiement automatique, toutes ces fonctionnalités sont gérées sur la plateforme GitLab.
 
-\begin{figure}[h]
-	\center
-	\includegraphics[width=0.6\textwidth]{./images/gitlab_mpc.png}
-	\caption[Planification des issues MPC]{Planning issues MPC - GitLab}\label{fig:gitlab_mpc}
-\end{figure}
+% \begin{figure}[h]
+% 	\center
+% 	\includegraphics[width=0.6\textwidth]{./images/gitlab_mpc.png}
+% 	\caption[Planification des issues MPC]{Planning issues MPC - GitLab}\label{fig:gitlab_mpc}
+% \end{figure}
 
 
 \subsection{Réalisation du projet}
@@ -196,58 +212,41 @@ Les adresses IP et les noms de domaine devaient être manuellement configurés p
 La gestion des comptes de messagerie était effectuée via HmailServer, où chaque domaine et adresse étaient créés manuellement avant d'être ajoutés dans Mozilla Thunderbird et ou Outlook.
 
 Cette approche offrait une solution locale robuste, mais nécessitait une configuration minutieuse et fastidieuse, notamment lors de changements d'adresses IP ou de la configuration des serveurs SMTP dans Thunderbird.
-Nous avons également souligner des limitations, telles que la nécessité d'ouvrir certains ports spécifiques pour que le serveur puisse fonctionner correctement sur certains PC, ce qui impliquait l'intervention de la DSI.
+Nous avons également souligné des limitations, telles que la nécessité d'ouvrir certains ports spécifiques pour que le serveur puisse fonctionner correctement sur certains PC, ce qui impliquait l'intervention de la DSI.
 
 L'étude de cette infrastructure existante a permis d'identifier les points forts et les limites de l'ancien système, ce qui nous guidera dans l'optimisation et la modernisation du nouveau projet de serveur de messagerie.
 
 
 \subsubsection{Nouvelle infrastructure du serveur de messagerie}
 
-
-
-Le projet de serveur de messagerie utilise une infrastructure basée sur Docker pour les environnements de développement et de production. Docker permet de containeriser les différents services nécessaires au fonctionnement du serveur de messagerie, offrant ainsi une grande flexibilité et une gestion simplifiée des déploiements. Cette approche permet également de maintenir des environnements cohérents entre le développement et la production, assurant une transition fluide et sans heurts.
+Le projet de serveur de messagerie utilise une infrastructure basée sur Docker pour les environnements de développement et de production. Docker permet de conteneuriser les différents services nécessaires au fonctionnement du serveur de messagerie, offrant ainsi une grande flexibilité et une gestion simplifiée des déploiements.
+Cette approche permet également de maintenir des environnements cohérents entre le développement et la production, assurant une transition fluide et sans heurts.
 
 Les services critiques, tels que le serveur SMTP, IMAP, l'interface d'administration, ainsi que les services auxiliaires comme le résolveur DNS, sont déployés dans des conteneurs Docker distincts. Cette architecture modulaire permet une maintenance facilitée et un déploiement rapide des mises à jour.
 
 \subsubsection{Description de l'infrastructure}
 
-Cet environnement est développé en utilisant les technologies et outils suivants :
+\textbf{Mailu} est un serveur de messagerie simple mais complet, facile à configurer et à entretenir.
 
-\noindent\textbf{Core services :}
+Cet environnement est développé en utilisant un ensemble d'images docker utilisées pour configurer et gérer le serveur de messagerie.\\
+
+\noindent Les services principaux incluent :
 \begin{itemize}
-	\item \textbf{Mailu :} Nn serveur de messagerie simple mais complet, facile à configurer et facile à entretenir et complet, sous forme d'un ensemble d'images Docker. Les principales caractéristiques comprennent :
-	      Un ensemble d'images Docker utilisées pour configurer et gérer le serveur de messagerie. Les services principaux incluent :
-	      \begin{itemize}
-		      \item \textbf{Serveur de messagerie standard,} IMAP et IMAP+, SMTP et soumission avec profils de configuration automatique pour les clients.
-		      \item \textbf{Fonctionnalités de messagerie avancées,} alias, alias de domaine, routage personnalisé, recherche en texte intégral des pièces jointes des e-mails
-		      \item \textbf{Accès Web (Roundcube),} Fournit les services IMAP pour l'accès aux boîtes aux lettres.
-		      \item \textbf{Fonctionnalités utilisateur,} alias, réponse automatique, transfert automatique, comptes récupérés, managesieve.
-		      \item \textbf{Fonctionnalités d'administration,} Un service de filtrage de spam qui analyse et marque les emails suspects.
-		      \item \textbf{Sécurité,} TLS appliqué, DANE, MTA-STS, Letsencrypt!, DKIM sortant, scanner antivirus, Snuffleupagus , blocage des pièces jointes malveillantes.
-		      \item \textbf{Antispam,} uto-apprentissage, liste grise, DMARC et SPF, anti-usurpation d'identité.
-		      \item \textbf{Liberté,} tous les composants FOSS, aucun tracker inclus.
-	      \end{itemize}
+	\item \textbf{Serveur de messagerie standard,} IMAP et IMAP+, SMTP et soumission avec profils de configuration automatique pour les clients.
+	\item \textbf{Fonctionnalités de messagerie avancées,} alias, alias de domaine, routage personnalisé, recherche en texte intégral des pièces jointes des e-mails
+	\item \textbf{Accès Web (Roundcube),} fournit les services IMAP pour l'accès aux boîtes aux lettres.
+	\item \textbf{Fonctionnalités utilisateur,} alias, réponse automatique, transfert automatique, comptes récupérés, managesieve.
+	\item \textbf{Fonctionnalités d'administration,} un service de filtrage de spam qui analyse et marque les emails suspects.
+	\item \textbf{Sécurité,} TLS appliqué, DANE, MTA-STS, Letsencrypt!, DKIM sortant, scanner antivirus, Snuffleupagus , blocage des pièces jointes malveillantes.
+	\item \textbf{Antispam,} auto-apprentissage, liste grise, DMARC et SPF, anti-usurpation d'identité.
+	\item \textbf{Transparence,} aucun tracker inclus dans tous les composants.
 \end{itemize}
 
-\begin{figure}[h]
-	\center
-	\includegraphics[width=\textwidth]{./images/domains_mailu.png}
-	\caption[Domaines du serveur Mailu]{Liste des domaines sur le serveur Mailu}\label{fig:domains_mailu}
-\end{figure}
 
-\noindent\textbf{Scripts d'administration :}
+\noindent La mise en place de l'infrastructure a nécessité l'utilisation de :
 \begin{itemize}
-	\item \textbf{setup-users :} Script pour configurer les comptes utilisateurs sur le serveur de messagerie.
-	\item \textbf{setup-emails :} Script pour initialiser les boîtes aux lettres des utilisateurs avec les messages préconfigurés.
-	\item \textbf{backup.sh :} Script utilisé pour sauvegarder les mails des joueurs d'une session de jeu.
-	\item \textbf{reset.sh :} Script utilisé pour réinitialiser et reconfigurer le serveur de messagerie.
-	\item \textbf{restore.sh :} Script utilisé pour restaurer les mails d'une session antérieure pour des fins statistiques et amélioration des scénarios.
-\end{itemize}
-
-\noindent\textbf{Infrastructure :}
-\begin{itemize}
-	\item \textbf{Docker :} Utilisé pour déployer et orchestrer l'ensemble des services de messagerie sur les serveurs de développement et de production.
-	\item \textbf{Poetry :} Utilisé pour gérer les dépendances Python et les scripts d'administration du serveur.
+	\item \textbf{Docker :}  pour déployer et orchestrer l'ensemble des services de messagerie sur les serveurs de développement et de production.
+	\item \textbf{Poetry :}  pour gérer les dépendances Python et les scripts d'administration du serveur. Voir la figure \ref{fig:docker_mpc}
 \end{itemize}
 
 \begin{figure}[h]
@@ -257,13 +256,35 @@ Cet environnement est développé en utilisant les technologies et outils suivan
 \end{figure}
 
 
+\subsubsection{Scripts d'administration}
+
+L'objectif principal de ce projet était d'automatiser et de simplifier la mise en place, le déploiement, et l'administration des boîtes mails utilisées dans le cadre des scénarios de simulation.
+
+Pour cela, j'ai développé des \textbf{scripts en Python et Bash} qui permettent de :
+
+\begin{itemize}
+	\item Configurer les comptes utilisateurs sur le serveur de messagerie.
+	\item Initialiser les boîtes aux lettres des utilisateurs avec les mails nécessaires pour le déroulement des scénarios.
+	\item Sauvegarder les mails des utilisateurs à la fin de chaque session de jeu.
+	\item Réinitialiser et reconfigurer le serveur de messagerie pour chaque nouvelle session.
+	\item Restaurer les mails d’une session antérieure pour des sessions ultérieures, selon les besoins des scénarios.
+\end{itemize}
+
+La rédaction de ces scripts est ma principale contribution au projet.
+Ils ont été spécifiquement conçus pour répondre aux exigences du projet, en assurant une administration fluide et efficace des boîtes mails au sein de l'environnement de simulation.
+
+
 \subsubsection{Avantages de la nouvelle infrastructure}
 
 La nouvelle infrastructure présente plusieurs avantages par rapport à l'ancienne :
 
 \begin{itemize}
-	\item \textbf{Flexibilité et Scalabilité :} L'utilisation de Docker pour containeriser les différents services permet une grande flexibilité dans la gestion des composants du système. Cette approche facilite le déploiement, la mise à jour, et la maintenance des services, tout en permettant de faire évoluer l'infrastructure selon les besoins croissants sans perturber les opérations en cours.
-	\item \textbf{Automatisation et Gestion Simplifiée :} L'intégration de scripts d'administration pour la configuration des comptes utilisateurs, initialisation des boîtes mails, la sauvegarde, la réinitialisation et la restauration des données simplifie considérablement la gestion du serveur de messagerie. Ces scripts automatisent des tâches qui, auparavant, auraient pu nécessiter une intervention manuelle complexe et fastidieuse, réduisant ainsi les risques d'erreur humaine et améliorant l'efficacité opérationnelle.
+	\item \textbf{Flexibilité et Scalabilité :} L'utilisation de Docker pour conteneuriser les différents services permet une grande flexibilité dans la gestion des composants du système.
+	      Cette approche facilite le déploiement, la mise à jour, et la maintenance des services, tout en permettant de faire évoluer l'infrastructure selon les besoins sans l'interruption des opérations en cours.
+	\item \textbf{Automatisation et Gestion Simplifiée} : L'intégration des scripts d'administration, que j'ai développés en \textbf{Python et Bash}, a considérablement simplifié la gestion des comptes utilisateurs, l'initialisation des boîtes mails, la sauvegarde, la réinitialisation et la restauration des données sur le serveur de messagerie.
+	      Ces scripts automatisent des tâches importante, telles que la création des comptes et la gestion des boîtes mails, qui auparavant auraient nécessité une intervention manuelle complexe et fastidieuse.
+	      Grâce à ces scripts, l'administration du serveur de messagerie est plus rapide et plus fiable, car toutes opérations sont standardisés et automatisés.
+	      Cela réduit les erreurs humaines et améliore l'efficacité opérationnelle du l'infrastructure.
 \end{itemize}
 
 
@@ -281,12 +302,23 @@ L’évaluation consistera non seulement en une quantification globale des perfo
 
 
 \subsection{Méthodologie}
+
+Dans le cadre de ce projet, nous avons implémenté un algorithme qui s’appuie sur le modèle \textbf{YOLOv8} pour la détection et l’algorithme \textbf{DeepOCsort} pour le tracking de véhicules.
 La méthodologie du projet DetReco repose sur plusieurs étapes clés :
 \begin{enumerate}
 	\item \textbf{Préparation des données :} Extraction et annotation d'images provenant de bases de données existantes. telles qu'ImageNet, OpenImages et Roboflow, complétées par des images collectées via des outils de scraping.
-	\item \textbf{Entraînement du modèle :} Utilisation de ces données pour affiner un modèle.
-	\item \textbf{Suivi des objets :} Application du modèle entraîné pour suivre les véhicules militaires dans des séquences vidéo.
-	\item \textbf{Génération d'images :} Utilisation de techniques pour créer des images supplémentaires de véhicules militaires sous diverses conditions.
+	      Ces images constituent le jeu de données de base pour l’entraînement de notre modèle de détection et de reconnaissance de véhicules militaires.
+
+	\item \textbf{Entraînement du modèle} : Utilisation des jeux de données pour entraîner le modèle YOLOv8, qui est un modèle de détection d'objets en temps réel.
+	      L'objectif est d'affiner le modèle pour qu'il soit capable de détecter et de reconnaître efficacement les véhicules militaires dans des séquences d’images et de vidéos.
+	      L'entraînement permet d'améliorer la précision du modèle dans des environnements variés, avec des conditions de visibilité et des camouflages différents.
+
+	\item \textbf{Suivi des objets} : Le modèle entraîné est ensuite appliqué pour détecter les véhicules militaires dans des vidéo.
+
+	\item \textbf{Génération d’images} : Utilisation de techniques de génération d'images basées sur des modèles génératifs, pour créer des images supplémentaires de véhicules militaires dans diverses conditions (par exemple, sous différents angles, éclairages ou environnements).
+	      Cette étape est indispensable pour enrichir le corpus d’entraînement car il manque des images pertinentes pour certains scénarios spécifiques.
+	      En augmentant les images d'entraînement sous diverses conditions, les performances du modèle sur des situations réelles pourront s'accroître.
+
 \end{enumerate}
 
 \subsubsection{Définition des classes}
@@ -296,10 +328,10 @@ Afin de développer un modèle capable de faire la différence entre différents
 Nous utiliserons 4 classes :
 
 \begin{itemize}
-	\item \textbf{Véhicule de combat blindé (AFV) :} Il s'agit d'un véhicule de combat protégé par un blindage, combinant généralement mobilité opérationnelle avec des capacités offensives et défensives. Les AFV peuvent être à roues ou à chenilles. Des exemples d'AFV incluent les chars(tanks), les véhicules blindés de combat, les canons d'assaut, les canons automoteurs, les véhicules de combat d'infanterie (IFV) et les transporteurs blindés de troupes (APC).
-	\item \textbf{Transport de troupes blindé (APC) :} C'est un type de véhicule militaire blindé conçu pour transporter du personnel et du matériel en zone de combat.
-	\item \textbf{Véhicule du génie militaire (MEV) :} Ce véhicule est conçu pour les travaux de construction ou pour le transport des ingénieurs de combat sur le champ de bataille.
-	\item \textbf{Véhicule blindé léger (LAV) :} Il s'agit de la catégorie de véhicules militaires la plus légère. Un véhicule à quatre roues motrices de type Jeep, destiné à un usage militaire, avec un blindage léger ou sans blindage. \textit{Véhicule de reconnaissance (RV)} est un véhicule militaire utilisé pour des missions de reconnaissance avancée. Les véhicules de reconnaissance à roues et à chenilles sont en service.
+	\item \textbf{Véhicule de combat blindé (AFV)}
+	\item \textbf{Transport de troupes blindé (APC)}
+	\item \textbf{Véhicule du génie militaire (MEV)}
+	\item \textbf{Véhicule blindé léger (LAV)}
 \end{itemize}
 
 \subsubsection{Préparation des données}
@@ -309,7 +341,7 @@ Nous utiliserons 4 classes :
 \begin{itemize}
 	\item \textbf{ImageNet : }Le premier dataset que nous avons utilisé est ImageNet21k. De ce dataset, nous avons pu avoir 378 images annotées de tanks.
 	\item \textbf{OpenImages : } Dans ce dataset, nous avons réussi à charger 1246 images annotées de tanks.
-	\item \textbf{Roboflow : } Nous disposons désormais de 1624 images annotées de tank, mais cela reste insuffisant pour un entraînement optimal du modèle. Pour obtenir encore plus d'images d'entraînement, nous avons charger un autre dataset annotées de véhicules militaires, mis à disposition par \textit{Tuomo Hiippala du Digital Geography Lab}.
+	\item \textbf{Roboflow : } Nous disposons désormais de 1624 images, mais cela reste insuffisant pour un entraînement optimal du modèle. Pour obtenir encore plus d'images d'entraînement, nous avons charger un autre dataset annotées de véhicules militaires.
 \end{itemize}
 
 \noindent Pour cette première étape, nous avons réussi à collecter \textbf{2666 images} de tanks dont \textbf{89 images} non annotées.\\
@@ -322,7 +354,7 @@ Nous utiliserons 4 classes :
 Ce nombre d'images nous permet de définir quatre grandes classes de véhicules militaires que notre modèle peut ensuite discriminer : \textbf{Armoured Fighting Vehicle (AFV), Armoured Personnel Carrier (APC), Military Engineering Vehicle (MEV) and Light Armoured Vehicle (LAV)}.
 
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\center
 	\includegraphics[width=\textwidth]{./images/fiftyone-dataset.png}
 	\caption[Fiftyone dataset]{FiftyOne - Dataset (3335 images)}\label{fig:fiftyone-dataset}
@@ -334,7 +366,7 @@ Pour la détection de véhicules militaires, en utilisant les datasets d'images 
 
 De base, nous utilisons le modèle \textbf{yolov8m.pt} (medium), qui offre un bon compromis entre taille et vitesse, mais d'autres modèles que nous utiliserons pour l'expérience, sont disponibles auprès \textit{d'ultralytics}.
 
-\begin{table}[h]
+\begin{table}[H]
 	\centering
 	\begin{tabular}{|p{2cm}|p{2cm}|p{1.7cm}|p{2.4cm}|p{2.4cm}|p{1.7cm}|p{1.7cm}|}
 		\hline
@@ -350,7 +382,7 @@ De base, nous utilisons le modèle \textbf{yolov8m.pt} (medium), qui offre un bo
 \end{table}
 
 A ce niveau de l'expérience, la collecte des données du dataset d'entraînement c'est faite en deux grande étapes (Prepare-01 et Prepare-02).
-Nous allons présenter les résultats d'entraînement avec et sans images non annotées avec des modèles de base de différences tailles.\\
+Nous allons présenter les résultats d'entraînement avec et sans images non annotées avec des modèles de base de différences tailles.
 
 La précision (\textbf{mAP : Mean Average Precision}) de notre modèle sera relevé à la fin de chaque entraînement afin de suivre son évolution.
 
@@ -372,45 +404,38 @@ A cette étape, le modèle détecte uniquement une classe 'tank', donc la mAP se
 
 J’ai essayé plusieurs scénarios sur l’algorithme en changeant le paramètres \textit{Epoch} (époques: passe complète à travers toutes les instances de dataset d'entraînement.) et la taille du modèles.
 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		\textbf{Modèles} & \textbf{Type d'images}                 & \textbf{Epoch} & \textbf{mAP} \\ \hline
+		\multirow{7}{*}{\texttt{yolov8m}}
+		                 & \multirow{3}{*}{Avec images négatives}
+		                 & 60                                     & 0.661                         \\ \cline{3-4}
+		                 &                                        & 80             & 0.655        \\ \cline{3-4}
+		                 &                                        & 100            & 0.648        \\ \cline{2-4}
+		                 & \multirow{4}{*}{Sans images négatives}
+		                 & 60                                     & 0.714                         \\ \cline{3-4}
+		                 &                                        & 70             & 0.692        \\ \cline{3-4}
+		                 &                                        & 80             & 0.700        \\ \cline{3-4}
+		                 &                                        & 100            & 0.700        \\ \hline
 
-\begin{itemize}
-	\item \textbf{yolov8m :}
-	      \begin{itemize}
-		      \item \textbf{Avec images non annotées :}
-		            \begin{itemize}
-			            \item Epoch = 60 $\Rightarrow$ mAP = 0.660601
-			            \item Epoch = 80 $\Rightarrow$ mAP = 0.6548
-			            \item Epoch = 100 $\Rightarrow$ mAP = 0.6476
-		            \end{itemize}
-		      \item \textbf{Sans images non annotées :}
-		            \begin{itemize}
-			            \item Epoch = 60 $\Rightarrow$ mAP = 0.71369
-			            \item Epoch = 70 $\Rightarrow$ mAP = 0.692007695
-			            \item Epoch = 80 $\Rightarrow$ mAP = 0.70
-			            \item Epoch = 100 $\Rightarrow$ mAP = 0.70
-		            \end{itemize}
-	      \end{itemize}
+		\multirow{3}{*}{\texttt{yolov8l}}
+		                 & \multirow{3}{*}{Avec images négative}
+		                 & 60                                     & 0.651                         \\ \cline{3-4}
+		                 &                                        & 80             & 0.649        \\ \cline{3-4}
+		                 &                                        & 100            & 0.638        \\ \hline
 
-	\item \textbf{yolov8l :}
-	      \begin{itemize}
-		      \item \textbf{Avec images non annotées :}
-		            \begin{itemize}
-			            \item Epoch = 60 $\Rightarrow$ mAP = 0.6512
-			            \item Epoch = 80 $\Rightarrow$ mAP = 0.6491
-			            \item Epoch = 100 $\Rightarrow$ mAP = 0.6384
-		            \end{itemize}
-	      \end{itemize}
+		\multirow{3}{*}{\texttt{yolov8x}}
+		                 & \multirow{3}{*}{Avec images négative}
+		                 & 60                                     & 0.652                         \\ \cline{3-4}
+		                 &                                        & 80             & 0.654        \\ \cline{3-4}
+		                 &                                        & 100            & 0.631        \\ \hline
+	\end{tabular}
+	\caption{Résultats des entraînements à l'étape \textbf{Prepare-01(2666 images)}.}
+	\label{tab:results_with_without_annotation}
+\end{table}
 
-	\item \textbf{yolov8x :}
-	      \begin{itemize}
-		      \item \textbf{Avec images non annotées :}
-		            \begin{itemize}
-			            \item Epoch = 60 $\Rightarrow$ mAP = 0.6518
-			            \item Epoch = 80 $\Rightarrow$ mAP = 0.6535
-			            \item Epoch = 100 $\Rightarrow$ mAP = 0.6308
-		            \end{itemize}
-	      \end{itemize}
-\end{itemize}
 
 
 Au vu de ces résultats, nous nous sommes rendu compte que la taille du modèle n'influence pas les résultats. Nous allons donc uniquement travailler avec la taille medium du modèle YoloV8.
@@ -422,18 +447,25 @@ Nous allons également utiliser des datasets contenant des images annotées.
 A cette étape, nous avons entraîné le modèle a détecter les 04 classes (AFV, APC, MEV, LAV).
 La moyenne mAP tient donc compte de ces 04 classes, mais nous allons aussi fournir la moyenne de chacune des classes.
 
-\begin{itemize}
-	\item \textbf{yolov8m :}
-	      \begin{itemize}
-		      \item Epoch = 60 $\Rightarrow$ mAP = 0.6609276140054803
-	      \end{itemize}
-\end{itemize}
+\paragraph{\texttt{yolov8m :}}
+- Epoch = 60 $\Rightarrow$ mAP = 0.6609
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|l|c|c|c|c|}
+		\hline
+		Classe       & Précision & Rappel & F1-score & Support \\ \hline
+		AFV          & 0.76      & 0.85   & 0.80     & 343     \\ \hline
+		APC          & 0.69      & 0.72   & 0.70     & 64      \\ \hline
+		LAV          & 0.55      & 0.72   & 0.62     & 25      \\ \hline
+		MEV          & 0.62      & 0.71   & 0.67     & 7       \\ \hline
+		micro avg    & 0.74      & 0.82   & 0.78     & 439     \\ \hline
+		macro avg    & 0.65      & 0.75   & 0.70     & 439     \\ \hline
+		weighted avg & 0.74      & 0.82   & 0.78     & 439     \\ \hline
+	\end{tabular}
+	\caption{Résultats pour \texttt{yolov8m} à Epoch 60}
+	\label{tab:yolov8m_epoch60}
+\end{table}
 
-\begin{figure}[h]
-	\center
-	\includegraphics[width=0.6\textwidth]{./images/map-train.png}
-	\caption[mAP des 04 classes]{mAP des 04 classes}\label{fig:map-train}
-\end{figure}
 
 
 
@@ -442,22 +474,51 @@ La moyenne mAP tient donc compte de ces 04 classes, mais nous allons aussi fourn
 Après avoir entraîné notre model avec notre jeu de donnée, nous utilisons le meilleur model (\textbf{best.pt}) obtenu pendant l'entraînement et un tracker (\textbf{bytetrack.yaml}) pour tracker les objets dans les vidéos.
 
 
-\begin{figure}[h]
-	\center
-	\includegraphics[width=0.8\textwidth]{./images/track2_val.jpg}
-	\caption[Détection et reconnaissance avec taux de précision]{Détection et reconnaissance avec taux de précision}\label{fig:track2_val}
-\end{figure}
-
-
 \subsubsection{Génération d'images :}
 
 Nous avons utilisé des méthodes d'augmentation des données afin d'améliorer la capacité du modèle à reconnaître des véhicules même lorsqu'ils sont éloignés ou partiellement masqués. Les méthodes utilisées incluent :
 
 \begin{itemize}
-	\item Une transformation \textbf{scale} pour dézoomer l'image et donner l'impression que le véhicule est vu de loin.
-	\item Une transformation \textbf{XYMasking} pour masquer des bandes horizontales ou verticales, simulant un véhicule caché par un obstacle.
-	\item Une transformation de type \textbf{Météo} pour donner l'impression qu'il y a de la neige, de la pluie ou du brouillard sur l'image.
+	\item Une transformation \textbf{scale} pour dézoomer l'image et donner l'impression que le véhicule est vu de loin. (Figure \ref{fig:scale_transformed})
+	\item Une transformation \textbf{XYMasking} pour masquer des bandes horizontales ou verticales, simulant un véhicule caché par un obstacle. (Figure \ref{fig:xymasking})
+	\item Une transformation de type \textbf{Météo} pour donner l'impression qu'il y a de la neige, de la pluie ou du brouillard sur l'image. (Figure \ref{fig:meteo})
 \end{itemize}
+
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.40\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./images/original-image.jpg}
+		\caption{Image originale}
+		\label{fig:original-image}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.40\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./images/scale_transformed.jpg}
+		\caption{Effet zoom}
+		\label{fig:scale_transformed}
+	\end{subfigure}
+	\vskip\baselineskip
+	\begin{subfigure}[b]{0.40\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./images/xymasking.jpg}
+		\caption{XYMasking}
+		\label{fig:xymasking}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.40\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./images/weather_effect.jpg}
+		\caption{Météo (pluie)}
+		\label{fig:meteo}
+	\end{subfigure}
+	\caption{Exemples transformation d'images de véhicules militaires}
+	\label{fig:military-vehicles}
+\end{figure}
+
+
 
 \noindent Les étapes spécifiques suivies sont les suivantes :
 
@@ -467,7 +528,38 @@ Nous avons utilisé des méthodes d'augmentation des données afin d'améliorer 
 	\item Enfin, nous avons entraîné le modèle YOLO avec ce dataset augmenté.
 \end{enumerate}
 
-Après l'augmentation des images, nous avons pu collecter en plus du dataset deja existant, \textbf{6670 images}.
+Après l'augmentation des images, nous avons pu collecter en plus du dataset deja existant, \textbf{8403 images}.
 
-Les résultats de l'entraînement seront dans l'annexe.
+
+\subsubsection*{Prepare-03: Dataset ImageNet, OpenImages, Russian Military Annotated (Roboflow), Google et données augmentées : 8403 images}
+
+\begin{flushleft}
+	Avant de commencer les analyses, il est important de noter que les performances du modèle dépendent fortement des paramètres d'entraînement, tels que le nombre d'époques et le type de données utilisées. Le tableau ci-dessous montre les résultats obtenus pour différents modèles et paramètres d'Epoch, en utilisant un ensemble de données combinant plusieurs sources.
+\end{flushleft}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|c|c|}
+		\hline
+		\multirow{2}{*}{\textbf{Modèles}} & \multirow{2}{*}{\textbf{Epoch}} & \multirow{2}{*}{\textbf{mAP}} & \multicolumn{4}{c|}{\textbf{Précision par classe}} & \multirow{2}{*}{\textbf{micro avg}}                      \\ \cline{4-7}
+
+		                                  &                                 &                               & AFV                                                & APC                                 & LAV  & MEV  &      \\ \hline
+		\multirow{5}{*}{\texttt{yolov8m}}
+		                                  & 60                              & 0.343                         & 0.71                                               & 0.59                                & 0.51 & 0.22 & 0.68 \\ \cline{2-8}
+		                                  & 70                              & 0.364                         & 0.71                                               & 0.57                                & 0.51 & 0.26 & 0.67 \\ \cline{2-8}
+		                                  & 80                              & 0.405                         & 0.73                                               & 0.54                                & 0.51 & 0.21 & 0.67 \\ \cline{2-8}
+		                                  & 90                              & 0.374                         & 0.72                                               & 0.63                                & 0.49 & 0.26 & 0.69 \\ \cline{2-8}
+		                                  & 100                             & 0.327                         & 0.67                                               & 0.49                                & 0.60 & 0.27 & 0.64 \\ \hline
+		\multirow{2}{*}{\texttt{yolov8l}}
+		                                  & 80                              & 0.360                         & 0.69                                               & 0.53                                & 0.45 & 0.24 & 0.65 \\ \cline{2-8}
+		                                  & 100                             & 0.331                         & 0.69                                               & 0.63                                & 0.52 & 0.21 & 0.67 \\ \hline
+	\end{tabular}
+	\caption{Résultats des entrainements à l'étapes \textbf{Prepare-03 (8403 images)}.}
+	\label{tab:results}
+\end{table}
+
+\begin{flushleft}
+	Ces résultats montrent que le modèle \texttt{yolov8m} atteint ses meilleures performances avec un nombre d'époques de 80, où le mAP est maximal. L'augmentation du nombre d'époques au-delà de 80 n'améliore pas nécessairement les performances, ce qui souligne l'importance d'un bon équilibre entre surapprentissage et sous-apprentissage.
+\end{flushleft}
+
 

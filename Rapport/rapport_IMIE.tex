@@ -11,9 +11,12 @@
 \makeindex
 \usepackage[lined,boxed,commentsnumbered, english, ruled,vlined,linesnumbered, french]{algorithm2e}
 \usepackage{amsthm}
-\newtheorem{theorem}{Theorem}[chapter]
-\newtheorem{definition}{Definition}[chapter]
-\newtheorem{exemple}{Example}[chapter]
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{array}
+
+
 
 
 \providecommand{\keywords}[1]{\textbf{\textit{Mots clés---}} #1}
@@ -172,6 +175,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \tableofcontents
+\addcontentsline{toc}{chapter}{Table des matières}
 
 \listoffigures
 
@@ -206,9 +210,6 @@
 \renewcommand{\thepage}{\Alph{page}}
 \pagenumbering{Alph}
 
-\input{chapitres/annexes.tex}
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Don't touch this, it is auto generated
@@ -222,6 +223,6 @@
 
 \cleardoublepage%
 
-\addtocontents{toc}{\protect\setcounter{tocdepth}{3}}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{4}}
 
 \end{document}

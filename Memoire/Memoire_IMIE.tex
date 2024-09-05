@@ -12,6 +12,11 @@
 \usepackage[lined,boxed,commentsnumbered, english, ruled,vlined,linesnumbered, french]{algorithm2e}
 \usepackage{amsthm}
 
+\usepackage{subcaption}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{array}
+
 
 
 \providecommand{\keywords}[1]{\textbf{\textit{Mots clés---}} #1}
@@ -46,6 +51,8 @@
 
 % Ajouter hyperref pour les liens cliquables
 \usepackage[hidelinks]{hyperref}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{float}
 
 \setcounter{secnumdepth}{3}
 
@@ -53,6 +60,34 @@
 % Enable SageTeX to run SageMath code right inside this LaTeX file.
 % documentation: http://mirrors.ctan.org/macros/latex/contrib/sagetex/sagetexpackage.pdf
 %\usepackage{sagetex}
+
+
+\usepackage{listings}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
 
 
 \newcommand{\reportTitle} {
@@ -82,8 +117,8 @@ Optimisation des Algorithmes de Deep Learning pour la Détection et la Reconnais
 
 \renewcommand{\chaptername}{Chapitre}
 \renewcommand{\contentsname}{Table des matières}
-\renewcommand{\listfigurename}{Liste des Figures}
-\renewcommand{\listtablename}{Liste des Tableaux}
+\renewcommand{\listfigurename}{Liste des figures}
+\renewcommand{\listtablename}{Liste des tableaux}
 \renewcommand{\bibname}{Bibliographie}
 \renewcommand{\appendixname}{Annexe}
 
@@ -98,13 +133,14 @@ Optimisation des Algorithmes de Deep Learning pour la Détection et la Reconnais
 
 \usepackage{graphics}
 \usepackage{graphicx}
+\usepackage{amsmath}
 
-\usepackage[acronym,toc,section=chapter]{glossaries}
-\makeglossaries
-\input{./chapitres/acronyms.tex}
+% \usepackage[acronym,toc,section=chapter]{glossaries}
+% \makeglossaries
+% \input{./chapitres/acronyms.tex}
 
 
-\pagenumbering{roman} 
+% \pagenumbering{roman} 
 
 \usepackage[utf8]{inputenc}
 
@@ -182,31 +218,25 @@ Optimisation des Algorithmes de Deep Learning pour la Détection et la Reconnais
 \tableofcontents
 \addcontentsline{toc}{chapter}{Table des matières}
 
-
+\input{./chapitres/acronyms.tex}
 \listoffigures
 \listoftables
-\listofalgorithms
-\addcontentsline{toc}{chapter}{Liste des algorithmes}
 \cleardoublepage
 
 \newpage
-\pagenumbering{arabic}
-\chapter*{Introduction}
-\label{chap:intorduction}
+% \pagenumbering{arabic}
+
 \input{./chapitres/introduction.tex}
 
 
-\chapter{Données étudiés}%
-\label{chap:1}
-\input{./chapitres/chapitre1.tex}
-
-\chapter{Modèles utilisés et Applications}
-\label{chap:2}
 \input{chapitres/chapitre2.tex}
 
 
-\chapter*{Conclusion}
-\label{chap:conclusion}
+\input{./chapitres/chapitre3.tex}
+
+\input{./chapitres/chapitre4.tex}
+
+
 \input{chapitres/conclusion.tex}
 
 \newpage
@@ -219,15 +249,6 @@ Optimisation des Algorithmes de Deep Learning pour la Détection et la Reconnais
 \bibliography{./chapitres/Biblio.bib}
 
 
-% \printglossaries
-\printglossary[type=\acronymtype, title={Liste des acronymes}]
-
-
-\appendix
-
-\input{chapitres/annexes.tex}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Don't touch this, it is auto generated
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -236,6 +257,6 @@ Optimisation des Algorithmes de Deep Learning pour la Détection et la Reconnais
 
 \cleardoublepage
 
-\addtocontents{toc}{\protect\setcounter{tocdepth}{3}}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{4}}
 
 \end{document}

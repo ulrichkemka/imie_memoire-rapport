@@ -1,17 +1,190 @@
+\chapter{Introduction}
+\label{chap:intorduction}
 \markboth{\MakeUppercase{Introduction}}{}
-\addcontentsline{toc}{chapter}{Introduction}
 \sloppy
 
-\textbf{Introduction Provisoire}\\
+Aujourd’hui, les données sont souvent comparées au pétrole du XXIe siècle.
+Chaque jour, plusieurs téraoctets de données sont stockés, constituant le carburant essentiel de la technologie moderne et de l'intelligence artificielle (IA) en particulier.
+Cette abondance de données rend possible le développement d'algorithmes sophistiqués, notamment dans le domaine du deep learning, qui permettent de traiter, d'analyser et d'interpréter des informations complexes avec une précision sans précédent.
 
-Aujourd'hui, les données sont souvent comparées au pétrole du XXIe siècle. 
-Chaque jour, plusieurs téraoctets de données sont stockés, formant ainsi le carburant essentiel de la technologie moderne et de l'intelligence artificielle (IA) en particulier.
-Avec une telle abondance, il semble facile de trouver suffisamment de données pour le développement de l'IA.
-Cependant, de nombreux organismes, issus de secteurs variés, rencontrent des difficultés pour accéder à certaines catégories d’informations indispensables à l'évolution de leur IA.
-Ces difficultés sont principalement dues à la rareté et à la confidentialité des données dans certains secteurs, notamment dans le domaine de la vision optique.
+Cependant, malgré cette richesse de données, de nombreux organismes issus de secteurs variés, en particulier le secteur de la défense, rencontrent des difficultés pour accéder à certaines catégories d’informations indispensables à l'évolution de leurs systèmes d'intelligence artificielle.
+Ces difficultés sont principalement dues à la rareté et à la confidentialité des données spécifiques, telles que celles relatives à la reconnaissance optique, notamment dans des contextes de sécurité nationale. Cela pose un défi majeur pour les systèmes automatisés de détection et de reconnaissance, qui doivent être capables de fonctionner efficacement même avec des données limitées.
 
-Dans ce contexte, nous nous sommes interrogés sur la manière dont le deep learning peut améliorer la détection et la reconnaissance en temps réel de véhicules militaires dans des images et vidéos.
-L'objectif de ce mémoire est d'étudier l'état de l'art des méthodes et algorithmes appliqués à cette tâche, afin de formuler des recommandations.
+Dans ce contexte, une question clé se pose : dans quelle mesure le deep learning peut-il améliorer la détection et la reconnaissance en temps réel de véhicules militaires dans des images et vidéos, en surmontant les obstacles liés à la rareté des données et à la diversité des environnements d'observation ?
+L’objectif de ce mémoire est d'explorer cette question en profondeur, en étudiant l’état de l’art des méthodes et algorithmes existants et en proposant des améliorations pour relever ces défis.
 
-Ce travail s'inscrit dans le cadre du projet DetReco (Détection et reconnaissance de véhicules militaires sur des images et vidéos), un projet visant à optimiser les algorithmes de deep learning pour la détection et la reconnaissance en temps réel de véhicules militaires.
-Ce projet repose sur la création et l'amélioration de jeux de données spécifiques, ainsi que sur le fine-tuning de modèles de détection d'objets. L'intégration de modèles génératifs, pour augmenter la diversité des données d'entraînement, a également constitué une part importante de ce projet.
+Ce travail s’inscrit dans le cadre du projet DetReco (Détection et reconnaissance de véhicules militaires sur des images et vidéos), un projet visant à optimiser les algorithmes de deep learning pour la détection et la reconnaissance en temps réel de véhicules militaires.
+Le projet repose sur la création et l’amélioration de jeux de données spécifiques, ainsi que sur le fine-tuning de modèles de détection d’objets.
+L'intégration de modèles génératifs, tels que ceux basés sur \textit{stable diffusion} , pour augmenter la diversité des données d'entraînement, constitue également une part importante de ce projet.
+
+Les résultats de ce travail pourraient non seulement améliorer les capacités des systèmes de défense en matière de surveillance et de reconnaissance, mais aussi ouvrir la voie à de nouvelles recherches sur l'application des techniques de deep learning dans des domaines où les données sont rares ou difficiles d'accès.
+Par conséquent, ce mémoire vise à contribuer à l'amélioration des algorithmes de détection et de reconnaissance dans des contextes critiques, tout en jetant les bases pour des développements futurs dans le domaine de l'intelligence artificielle appliquée à la défense.
+
+
+\newpage
+
+\section{Présentation de l'entreprise}
+\subsection{Centre de recherche Inria}
+L’Inria est l’institut national de recherche en sciences et technologies du numérique, crée en 1967, il dispose de 11 centres et plus de 20 antennes et emploie 2600 personnes. La recherche de rang mondial, l’innovation technologique et le risque entrepreneurial constituent son ADN.
+Au sein de 215 équipes-projets en général communes avec des partenaires académiques, plus de 3 900 chercheurs et ingénieurs y explorent des voies nouvelles. 900 personnels d’appui à la recherche et à l’innovation contribuent à faire émerger et grandir des projets scientifiques ou entrepreneuriaux qui impactent le monde.
+
+L’institut fait appel à de nombreux talents dans plus d’une quarantaine de métiers différents, travaille avec de nombreuses entreprises et a accompagné la création de plus de 180 start-ups.
+Inria soutient la diversité des voies de l’innovation : de l’édition open source de logiciels à la création de startups technologiques (Deeptech).
+
+
+\subsection{Département Défense et Sécurité}
+Le renforcement des partenariats avec la sphère Sécurité et Défense de l’État est une priorité stratégique de l’Inria. C’est de ce contexte qu’est né le département. Créé en mars 2020 et dirigé par Frédérique Segond, la Mission Défense et Sécurité a pour objectif le soutient des politiques gouvernementales qui visent la souveraineté et l’autonomie stratégique numérique de l’Etat français, voire européen. Elle fédère tous les projets sécurité défense d’Inria bientôt de toute la France.
+L’équipe en pleine croissance est actuellement composée de seize personnes ayant chacun un rôle bien définit avec le soutien des intervenants externes à la mission.
+
+\newpage
+\section{Contexte et problématique}
+
+Le contexte de ce mémoire s’inscrit dans le cadre d'une collaboration entre l'équipe STARS du centre de Sophia-Antipolis, la Direction Générale de l’Armement Techniques Terrestres (DGA TT), et le département Défense et Sécurité de l’Inria.
+Cette collaboration a pour objectif de répondre à un besoin stratégique : la détection et la reconnaissance, en temps réel, de véhicules militaires dans des images et des vidéos.
+
+Les applications de détection et de reconnaissance d’objets basées sur l’intelligence artificielle (IA) ont vu une croissance exponentielle ces dernières années.
+Dans le domaine de la défense, la précision et la rapidité de ces systèmes sont essentielles pour garantir la sécurité nationale.
+Cependant, la nature même des environnements militaires présente des défis complexes pour les algorithmes de détection : les véhicules militaires sont souvent camouflés, dissimulés partiellement, ou se trouvent dans des conditions de visibilité réduite.
+De plus, les données disponibles pour entraîner ces systèmes sont limitées en quantité et en diversité, en raison de leur caractère confidentiel et des contraintes d’accès aux données militaires.
+
+Dans ce contexte, l'application des modèles de deep learning à la reconnaissance des véhicules militaires représente une avancée significative.
+Cependant, les méthodes traditionnelles de deep learning rencontrent des limitations lorsqu'elles sont appliquées à ce domaine spécifique.
+Par exemple, les bruits et les interférences sur les images, la rareté des données d'entraînement, et les défis liés au camouflage et aux occultations rendent la tâche de détection plus difficile.
+
+La problématique principale de ce mémoire est donc la suivante :
+\textit{Dans quelle mesure le deep learning peut-il améliorer la détection et la reconnaissance en temps réel de véhicules militaires dans des images et vidéos ?}
+
+L’objectif de ce mémoire est d'étudier l'état de l'art des algorithmes de deep learning appliqués à cette problématique, de développer des solutions innovantes pour surmonter les limitations existantes, et de proposer des recommandations pour améliorer la performance de ces systèmes dans des contextes opérationnels.
+Pour cela, ce travail intègre l'utilisation de techniques avancées telles que la data augmentation, l'utilisation de modèles génératifs pour enrichir les jeux de données, et l'optimisation des modèles de détection pour les adapter aux contraintes spécifiques du domaine militaire.
+
+Ce projet, nommé \textit{DetReco} (Détection et reconnaissance de véhicules militaires sur des images et vidéos), vise à concevoir une solution technologique robuste, capable de répondre aux besoins opérationnels des acteurs de la défense tout en tenant compte des spécificités du domaine, telles que la confidentialité et la rareté des données disponibles.
+
+
+\section{Initialisation du projet}
+\subsection{Charte du projet}
+
+L’objectif du projet \textit{DetReco} est de développer une solution pour la détection et la reconnaissance en temps réel de véhicules militaires dans des images et des vidéos.
+Cette solution repose sur l'optimisation des algorithmes de deep learning afin de surmonter les défis spécifiques rencontrés dans le domaine de la défense, tels que le camouflage, la rareté des données et les environnements complexes.
+
+Cependant, pour que cette solution soit efficace, il est important que les algorithmes et les modèles développés soient continuellement améliorés et adaptés en fonction des nouvelles données et des retours d'expérience issus des déploiements sur le terrain.
+Cela signifie que les modèles doivent être régulièrement revus par l'équipe de développement, et que toute modification apportée à la structure des données ou à l'environnement d'entraînement doit être suivie d'une mise à jour des algorithmes correspondants afin de maintenir leur efficacité opérationnelle.
+
+L’optimisation des modèles de détection permet de réduire les faux positifs et les faux négatifs, augmentant ainsi la précision globale du système.
+Elle permet également de s'assurer que les modèles restent performants dans des scénarios variés, en particulier face à des véhicules camouflés ou partiellement occultés.
+Cette approche est essentielle pour garantir que la solution réponde aux exigences opérationnelles des acteurs de la défense.
+
+Pour tirer pleinement parti du projet \textit{DetReco}, il est important que les modèles soient régulièrement ajustés et entraîné en fonction des nouvelles situations et images rencontrées lors des recherches.
+Ainsi, lorsque de nouvelles images deviennent disponibles, ou lorsque les conditions d'entraînement évoluent, les modèles doivent être réentraînés et les paramètres ajustés en conséquence pour garantir leur pertinence continue.
+
+
+
+\begin{table}[h]
+    \centering
+    % \footnotesize
+    \begin{tabular}{|p{4cm}|p{12.5cm}|}
+        \hline
+        \rowcolor{yellow}\multicolumn{2}{|c|}{\textbf{Agile Project Charter}}                                                                                                                                                                                                                                                                                        \\
+        \hline
+        \rowcolor{gray}\multicolumn{2}{|c|}{\textbf{General Project Information}}                                                                                                                                                                                                                                                                                    \\
+        \hline
+        \textbf{Project Name}                        & Détection et reconnaissance de véhicules militaires en temps réel dans des images et vidéos                                                                                                                                                                                                                   \\
+        \hline
+        \textbf{Project Sponsor}                     & Direction Générale de l'Armement Techniques Terrestres (DGA TT)                                                                                                                                                                                                                                               \\
+        \hline
+        \textbf{Organization}                        & Inria (Équipe STARS et mission Défense \& Sécurité)                                                                                                                                                                                                                                                           \\
+        \hline
+        \textbf{Project Start Date}                  & 01/04/2023                                                                                                                                                                                                                                                                                                    \\
+        \hline
+        \textbf{Project End Date}                    & ----                                                                                                                                                                                                                                                                                                          \\
+        \hline
+        \rowcolor{gray}\multicolumn{2}{|c|}{\textbf{Project Details}}                                                                                                                                                                                                                                                                                                \\
+        \hline
+        \textbf{Mission}                             & Le projet vise à développer une solution de détection et de reconnaissance en temps réel de véhicules militaires dans des images et vidéos à l'aide d'algorithmes de deep learning optimisés pour des environnements complexes.                                                                               \\
+        \hline
+        \textbf{Vision}                              & La solution permettra de différencier les véhicules militaires des autres objets dans des conditions de visibilité réduite ou camouflée, assurant ainsi une meilleure précision pour les opérations militaires.                                                                                               \\
+        \hline
+        \textbf{Scope}                               & Le projet couvrira l'optimisation des algorithmes de détection d'objets pour les environnements militaires, en mettant l'accent sur les points difficiles tels que faible résolution, faible contraste, occultations et camouflage robustesse face aux variations d'images et la confidentialité des données. \\
+        \hline
+        \textbf{Success Metrics}                     & Amélioration de la précision de détection à 80\%, réduction des faux positifs de 15\%.                                                                                                                                                                                                                        \\
+        \hline
+        \textbf{Definition of Done criteria}         & Les modèles de détection auront été intégrés avec succès dans l'environnement opérationnel de test et validés avec des données réelles en conditions militaires.                                                                                                                                              \\
+        \hline
+        \rowcolor{gray}\multicolumn{2}{|c|}{\textbf{Project Team}}                                                                                                                                                                                                                                                                                                   \\
+        \hline
+        \textbf{Project Manager}                     & Jonas RENAULT                                                                                                                                                                                                                                                                                                 \\
+        \hline
+        \textbf{Scrum Master}                        & Jonas RENAULT                                                                                                                                                                                                                                                                                                 \\
+        \hline
+        \textbf{Technical Lead}                      & Jonas RENAULT                                                                                                                                                                                                                                                                                                 \\
+        \hline
+        \textbf{Team Members}                        & Équipe STARS, mission Défense \& Sécurité                                                                                                                                                                                                                                                                     \\
+        \hline
+        \rowcolor{gray}\multicolumn{2}{|c|}{\textbf{Team Rules}}                                                                                                                                                                                                                                                                                                     \\
+        \hline
+        \textbf{Duration of Sprint}                  & Sprint de deux semaines                                                                                                                                                                                                                                                                                       \\
+        \hline
+        \textbf{Break Between Sprints}               & > 1 jour                                                                                                                                                                                                                                                                                                      \\
+        \hline
+        \textbf{Duration of Sprint Planning Meeting} & 1 heure                                                                                                                                                                                                                                                                                                       \\
+        \hline
+        \textbf{Duration of Daily Scrum Meeting}     & 30 minutes                                                                                                                                                                                                                                                                                                    \\
+        \hline
+        \textbf{Duration of Sprint Review}           & 30 minutes                                                                                                                                                                                                                                                                                                    \\
+        \hline
+        \textbf{Duration of Sprint Retrospective}    & 1 heure                                                                                                                                                                                                                                                                                                       \\
+        \hline
+    \end{tabular}
+    \caption{Charte du Projet DetReco}
+\end{table}
+
+
+% \newpage
+\clearpage
+\subsection{Registre des parties prenantes}
+
+Le registre des parties prenantes est un outil essentiel utilisé dans la gestion de projet pour identifier, analyser et gérer les parties prenantes impliquées dans le projet.
+Il permet de recueillir et de consolider les informations clés sur chaque partie prenante afin de mieux comprendre leurs besoins, attentes, intérêts et influences.
+
+Dans le tableau ci-dessous, nous pouvons observer les parties prenantes et leurs caractéristiques.
+
+\begin{table}[H]
+    \centering
+    % \footnotesize
+    \scriptsize
+    \begin{tabular}{|p{0.3cm}|p{1.9cm}|p{0.9cm}|p{2.5cm}|p{0.9cm}|p{1cm}|p{1.5cm}|p{2.7cm}|p{2.3cm}|}
+        \hline
+        \rowcolor{green} \textbf{\#} & \textbf{Nom}           & \textbf{Type} & \textbf{Rôle}                                                        & \textbf{Intérêt} & \textbf{Pouvoir} & \textbf{Stratégie} & \textbf{Contributions}                                                                                          & \textbf{Attentes}                      \\
+        \hline
+        P1                           & Développeur            & Interne       & Développer les algorithmes de détection et de reconnaissance         & Élevé            & Faible           & Garder Informé     & Ils développent les modèles de deep learning et les optimisent pour les environnements militaires.              & Précision et robustesse des modèles    \\
+        \hline
+        P2                           & Analyste de données    & Interne       & Préparer et annoter les jeux de données                              & Élevé            & Faible           & Garder Informé     & Ils doivent préparer des jeux de données diversifiés pour entraîner les modèles.                                & Qualité et diversité des données       \\
+        \hline
+        P3                           & Chercheur              & Interne       & Conduire les recherches nécessaires à l'amélioration des algorithmes & Élevé            & Moyen            & Garder Informé     & Ils mènent des expérimentations pour tester et valider les approches proposées, en apportant des améliorations. & Pertinence et innovation des solutions \\
+        \hline
+        P4                           & Chef de projet         & Interne       & Manager le projet et l'équipe                                        & Élevé            & Élevé            & Acteur Clé         & Ils coordonnent l'équipe, s'assurent du respect des délais, et communiquent avec les sponsors.                  & Périmètre et délais                    \\
+        \hline
+        P5                           & Commanditaire (DGA TT) & Externe       & Financer et évaluer le projet                                        & Élevé            & Élevé            & Acteur Clé         & Ils planifient les réunions de suivi, apportent des modifications et valident les livrables.                    & Efficacité des résultats               \\
+        \hline
+    \end{tabular}
+    \caption{Registre des parties prenantes pour le projet DetReco}
+\end{table}
+
+
+% \clearpage
+
+\subsection{Choix de la méthode de gestion du projet}
+
+Pour le projet DetReco, la méthodologie agile Scrum a été choisie pour sa capacité à s'adapter aux projets complexes et flexible.
+Scrum divise le travail en sprints, permettant une évaluation régulière des ajustements des modèles et des résultats de leur entraînement en fonction des retours.
+
+Cette méthode est bien adaptée à DetReco, où les algorithmes de deep learning nécessitent des optimisations continues en fonction des nouvelles images et des résultats des entraînements des modèles étudiés.
+Elle permet à l'équipe de s'ajuster rapidement aux spécificités des environnements militaires.
+
+
+\begin{figure}[H]
+    % \center
+    \includegraphics[width=1\textwidth]{./images/scrum2-0.png}
+    \caption[Agile Scrum]{Agile Scrum \cite{exaraw2024}}
+    \label{fig:map-train}
+\end{figure}
+
