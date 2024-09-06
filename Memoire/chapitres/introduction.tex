@@ -7,8 +7,10 @@ Aujourd’hui, les données sont souvent comparées au pétrole du XXIe siècle.
 Chaque jour, plusieurs téraoctets de données sont stockés, constituant le carburant essentiel de la technologie moderne et de l'intelligence artificielle (IA) en particulier.
 Cette abondance de données rend possible le développement d'algorithmes sophistiqués, notamment dans le domaine du deep learning, qui permettent de traiter, d'analyser et d'interpréter des informations complexes avec une précision sans précédent.
 
-Cependant, malgré cette richesse de données, de nombreux organismes issus de secteurs variés, en particulier le secteur de la défense, rencontrent des difficultés pour accéder à certaines catégories d’informations indispensables à l'évolution de leurs systèmes d'intelligence artificielle.
-Ces difficultés sont principalement dues à la rareté et à la confidentialité des données spécifiques, telles que celles relatives à la reconnaissance optique, notamment dans des contextes de sécurité nationale. Cela pose un défi majeur pour les systèmes automatisés de détection et de reconnaissance, qui doivent être capables de fonctionner efficacement même avec des données limitées.
+Malgré l'abondance de données disponibles, de nombreuses organisations, notamment dans le secteur de la défense, peinent à accéder à certaines catégories d'informations essentielles au développement de leurs systèmes d'intelligence artificielle.
+Cette difficulté est principalement liée à la rareté et à la nature confidentielle des données spécifiques, telles que celles relatives à la reconnaissance optique, particulièrement dans des contextes de sécurité nationale.
+Cela représente un défi majeur pour les systèmes automatisés de détection et de reconnaissance, qui doivent fonctionner efficacement même avec des données restreintes.
+
 
 Dans ce contexte, une question clé se pose : dans quelle mesure le deep learning peut-il améliorer la détection et la reconnaissance en temps réel de véhicules militaires dans des images et vidéos, en surmontant les obstacles liés à la rareté des données et à la diversité des environnements d'observation ?
 L’objectif de ce mémoire est d'explorer cette question en profondeur, en étudiant l’état de l’art des méthodes et algorithmes existants et en proposant des améliorations pour relever ces défis.
@@ -42,10 +44,10 @@ L’équipe en pleine croissance est actuellement composée de seize personnes a
 Le contexte de ce mémoire s’inscrit dans le cadre d'une collaboration entre l'équipe STARS du centre de Sophia-Antipolis, la Direction Générale de l’Armement Techniques Terrestres (DGA TT), et le département Défense et Sécurité de l’Inria.
 Cette collaboration a pour objectif de répondre à un besoin stratégique : la détection et la reconnaissance, en temps réel, de véhicules militaires dans des images et des vidéos.
 
-Les applications de détection et de reconnaissance d’objets basées sur l’intelligence artificielle (IA) ont vu une croissance exponentielle ces dernières années.
-Dans le domaine de la défense, la précision et la rapidité de ces systèmes sont essentielles pour garantir la sécurité nationale.
-Cependant, la nature même des environnements militaires présente des défis complexes pour les algorithmes de détection : les véhicules militaires sont souvent camouflés, dissimulés partiellement, ou se trouvent dans des conditions de visibilité réduite.
-De plus, les données disponibles pour entraîner ces systèmes sont limitées en quantité et en diversité, en raison de leur caractère confidentiel et des contraintes d’accès aux données militaires.
+Les systèmes d'intelligence artificielle dédiés à la détection et à la reconnaissance d'objets ont connu une expansion rapide ces dernières années.
+Dans le secteur de la défense, il est crucial que ces technologies allient précision et rapidité pour assurer la sécurité nationale.
+Cependant, les environnements militaires présentent des défis spécifiques pour ces algorithmes : les véhicules militaires peuvent être camouflés, partiellement cachés, ou se trouver dans des conditions de faible visibilité.
+Par ailleurs, les données utilisées pour entraîner ces systèmes sont souvent limitées en termes de quantité et de diversité, en raison de leur nature confidentielle et des restrictions d'accès aux informations militaires.
 
 Dans ce contexte, l'application des modèles de deep learning à la reconnaissance des véhicules militaires représente une avancée significative.
 Cependant, les méthodes traditionnelles de deep learning rencontrent des limitations lorsqu'elles sont appliquées à ce domaine spécifique.
@@ -66,8 +68,8 @@ Ce projet, nommé \textit{DetReco} (Détection et reconnaissance de véhicules m
 L’objectif du projet \textit{DetReco} est de développer une solution pour la détection et la reconnaissance en temps réel de véhicules militaires dans des images et des vidéos.
 Cette solution repose sur l'optimisation des algorithmes de deep learning afin de surmonter les défis spécifiques rencontrés dans le domaine de la défense, tels que le camouflage, la rareté des données et les environnements complexes.
 
-Cependant, pour que cette solution soit efficace, il est important que les algorithmes et les modèles développés soient continuellement améliorés et adaptés en fonction des nouvelles données et des retours d'expérience issus des déploiements sur le terrain.
-Cela signifie que les modèles doivent être régulièrement revus par l'équipe de développement, et que toute modification apportée à la structure des données ou à l'environnement d'entraînement doit être suivie d'une mise à jour des algorithmes correspondants afin de maintenir leur efficacité opérationnelle.
+Pour assurer l'efficacité de cette solution, il est essentiel que les algorithmes et modèles développés évoluent constamment en fonction des nouvelles données et des retours d'expérience provenant des déploiements sur le terrain.
+Cela implique que l'équipe de développement doit régulièrement réévaluer les modèles et que toute modification apportée aux structures de données ou à l'environnement d'entraînement doit être suivie d'une mise à jour des algorithmes, garantissant ainsi leur performance opérationnelle.
 
 L’optimisation des modèles de détection permet de réduire les faux positifs et les faux négatifs, augmentant ainsi la précision globale du système.
 Elle permet également de s'assurer que les modèles restent performants dans des scénarios variés, en particulier face à des véhicules camouflés ou partiellement occultés.
