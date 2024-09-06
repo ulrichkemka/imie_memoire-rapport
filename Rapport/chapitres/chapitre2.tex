@@ -17,7 +17,7 @@ IntelLab est un environnement de \textbf{simulation, formation, et d’expérime
 	\item Des scénarios de type sécurité économique (détection de signaux faibles précurseurs d'actions d'ingérence).
 \end{itemize}
 
-\subsection{Moyens mis à la disposition des équipes de développement}
+\subsection{Ressources disponibles}
 Dans le cadre de ce projet, l'équipe de développement est composée uniquement du responsable informatique et de moi-même. Nous avons adopté une approche \textit{agile et collaborative} pour gérer le projet.
 Cette méthode nous a permis de maximiser notre efficacité en encourageant une communication régulière et une adaptation rapide aux besoins et évolutions du projet.
 
@@ -41,7 +41,7 @@ Le responsable informatique Jonas Renault étant chargé de la planification, a 
 \begin{figure}[h]
 	\center
 	\includegraphics[width=\textwidth]{./images/gitlab_intellab.PNG}
-	\caption[Planification des issues]{Planning issues - GitLab}\label{fig:gitlab_intellab}
+	\caption[Planification des issues]{Planification des tâches - GitLab}\label{fig:gitlab_intellab}
 \end{figure}
 
 GitLab est une plateforme de gestion de code source basée sur Git qui permet aux équipes de développeurs de collaborer sur des projets de logiciels, de suivre les modifications du code source et de gérer des versions de code.
@@ -123,7 +123,7 @@ En tant qu'environnement de simulation, formation et expérimentation, la fiabil
 IntelLab est une application de recherche, donc nous n’avons pas les mêmes attentes ni besoins en termes de stratégie de tests.
 
 
-\subsubsection{Objectifs et critères de tests}
+\subsubsection{Objectifs}
 Les tests sur IntelLab visent à assurer que l'application répond aux exigences fonctionnelles, en permettant des simulations réalistes et fiables des scénarios de renseignement.
 Ils visent également à garantir la stabilité et la sécurité des données, à détecter et corriger les anomalies pendant les exercices, et à améliorer l'ergonomie et la convivialité de l'application pour une meilleure expérience utilisateur.
 
@@ -181,10 +181,9 @@ Ce type de scénario a exigé le développement d'un autre d'environnement car d
 Cette plateforme est née du fait qu'on doit recréer un environnement d’entreprise telles que des startups ou des équipes de recherche.
 Les objectifs sont la formation et la sensibilisation à la détection de signaux faibles précurseurs d’actions d’ingérence.
 
-Pour accomplir cela, nous avons mis en place un serveur d'envoi de mails qui simule l'envoi de messages électroniques entre des personnages fictifs au sein de cet environnement.
-Des scripts ont été créés pour initialiser les boîtes mail, gérer les sauvegardes, et générer ainsi qu'envoyer des emails.
-Ce système permet de recréer de manière réaliste les échanges typiques au sein d'une entreprise, afin de mieux préparer les utilisateurs à identifier des menaces potentielles dans un contexte réel.
-
+Pour ce faire, nous avons configuré un serveur de messagerie simulant des échanges électroniques entre des utilisateurs fictifs au sein de l’environnement.
+Des scripts ont été développés pour initialiser les boîtes de réception, effectuer des sauvegardes, et automatiser l’envoi de messages.
+Ce dispositif permet de reproduire fidèlement les interactions courantes en entreprise, afin de sensibiliser les utilisateurs à la détection de menaces dans un cadre réaliste.
 
 \subsection{Outils de gestion de projet}
 Comme pour les autres projets, nous sommes une équipe de deux personnes, le responsable informatique et moi. Au vu de cela, nous avons toujours adopté la méthodologie agile car cela nous permet de gérer efficacement nos ressources limitées, de nous adapter rapidement aux changements de priorités, et de livrer des fonctionnalités clés du serveur de messagerie de manière itérative et continue, en garantissant une meilleure réactivité aux besoins des utilisateurs finaux.
@@ -192,12 +191,6 @@ Comme pour les autres projets, nous sommes une équipe de deux personnes, le res
 \subsubsection{Planification des tâches}
 Comme pour l'autre projet, nous avons centralisé la gestion de ce projet sur la plateforme GitLab.
 La description des taches, la gestion du code, collaboration en temps réel, l’intégration continue et le déploiement automatique, toutes ces fonctionnalités sont gérées sur la plateforme GitLab.
-
-% \begin{figure}[h]
-% 	\center
-% 	\includegraphics[width=0.6\textwidth]{./images/gitlab_mpc.png}
-% 	\caption[Planification des issues MPC]{Planning issues MPC - GitLab}\label{fig:gitlab_mpc}
-% \end{figure}
 
 
 \subsection{Réalisation du projet}
@@ -214,7 +207,7 @@ La gestion des comptes de messagerie était effectuée via HmailServer, où chaq
 Cette approche offrait une solution locale robuste, mais nécessitait une configuration minutieuse et fastidieuse, notamment lors de changements d'adresses IP ou de la configuration des serveurs SMTP dans Thunderbird.
 Nous avons également souligné des limitations, telles que la nécessité d'ouvrir certains ports spécifiques pour que le serveur puisse fonctionner correctement sur certains PC, ce qui impliquait l'intervention de la DSI.
 
-L'étude de cette infrastructure existante a permis d'identifier les points forts et les limites de l'ancien système, ce qui nous guidera dans l'optimisation et la modernisation du nouveau projet de serveur de messagerie.
+L’analyse de l'infrastructure actuelle a mis en lumière les points forts et les limites de l’ancien système, fournissant ainsi des indications nécessaires pour améliorer et actualiser le nouveau projet de serveur de messagerie.
 
 
 \subsubsection{Nouvelle infrastructure du serveur de messagerie}
@@ -274,7 +267,7 @@ La rédaction de ces scripts est ma principale contribution au projet.
 Ils ont été spécifiquement conçus pour répondre aux exigences du projet, en assurant une administration fluide et efficace des boîtes mails au sein de l'environnement de simulation.
 
 
-\subsubsection{Avantages de la nouvelle infrastructure}
+\subsubsection{Avantages}
 
 La nouvelle infrastructure présente plusieurs avantages par rapport à l'ancienne :
 
@@ -559,7 +552,7 @@ Après l'augmentation des images, nous avons pu collecter en plus du dataset dej
 \end{table}
 
 \begin{flushleft}
-	Ces résultats montrent que le modèle \texttt{yolov8m} atteint ses meilleures performances avec un nombre d'époques de 80, où le mAP est maximal. L'augmentation du nombre d'époques au-delà de 80 n'améliore pas nécessairement les performances, ce qui souligne l'importance d'un bon équilibre entre surapprentissage et sous-apprentissage.
+	Les résultats révèlent que le modèle \texttt{yolov8m} obtient ses performances optimales après 80 époques, moment où le mAP atteint son niveau le plus élevé. Au-delà de ce seuil, une augmentation supplémentaire du nombre d'époques n'améliore pas nécessairement les résultats, ce qui met en évidence la nécessité de trouver un juste équilibre entre sous-apprentissage et surapprentissage.
 \end{flushleft}
 
 
